@@ -6,6 +6,5 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Set applications to XDG spec
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh" # zsh
-export CARGO_HOME="${XDG_DATA_HOME}"/cargo # cargo
+export CARGO_HOME="${XDG_DATA_HOME}/cargo" # cargo
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup" # rustup
-export CARGO_HOME="${XDG_DATA_HOME}/cargo" # rustup
