@@ -1,0 +1,103 @@
+# Load ZI (https://github.com/z-shell/zi/)
+# Install: git clone https://github.com/z-shell/zi.git "${HOME}/.local/share/zi/bin"
+declare -A ZI; ZI[HOME_DIR]="${XDG_DATA_HOME}/zi" # Set directory
+source "${ZI[HOME_DIR]}/bin/zi.zsh"
+
+# PATH
+PATH="${HOME}/.local/bin:${CARGO_HOME}/bin:${PATH}"
+
+# --------------------------------
+# Keybind
+# --------------------------------
+
+# Movement
+bindkey '^[[H' beginning-of-line # Home
+bindkey "^[[5~"  beginning-of-buffer-or-history # PgDn
+bindkey "^[[6~"  end-of-buffer-or-history # PgUp
+bindkey '^[[F' end-of-line # End
+
+bindkey "^[[1;5C" forward-word # C-Left
+bindkey "^[[1;5D" backward-word # C-Right
+
+# Zsh Shift Select Mode (https://github.com/jirutka/zsh-shift-select)
+# Emacs shift-select mode for Zsh
+zi light jirutka/zsh-shift-select
+
+# Misc
+bindkey "^[" send-break # Esc for cancel
+
+
+# --------------------------------
+# Completion
+# --------------------------------
+
+# zsh-autocomplete (https://github.com/marlonrichert/zsh-autocomplete)
+# Real-time type-ahead autocompletion to Zsh
+zi light marlonrichert/zsh-autocomplete # TODO: turbo loading
+zstyle ':autocomplete:*' insert-unambiguous yes # Tab first inserts a substring common to all listed completions, if any.
+
+# zsh-completions (https://github.com/zsh-users/zsh-completions)
+# Additional completion definitions for Zsh
+zi ice lucid wait as'completion'
+zi light zsh-users/zsh-completions
+
+# zsh-autosuggestions (https://github.com/zsh-users/zsh-autosuggestions)
+# Fish-like fast/unobtrusive autosuggestions for zsh
+#lzi ice lucid wait atload'_zsh_autosuggest_start'
+zi light zsh-users/zsh-autosuggestions # TODO: config
+
+
+# --------------------------------
+# Appearance
+# --------------------------------
+
+# zsh-syntax-highlighting (https://github.com/zsh-users/zsh-syntax-highlighting)
+# Fish shell-like syntax highlighting for Zsh
+zi ice lucid wait
+zi light zsh-users/zsh-syntax-highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor) # Activate highighters
+# highlight pattern
+typeset -A ZSH_HIGHLIGHT_PATTERNS # Declare the variable
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+
+
+# --------------------------------
+# History
+# --------------------------------
+HISTFILE="${XDG_DATA_HOME}/zsh/history" # XDG spec
+HISTSIZE=1000000
+SAVEHIST=10000000
+
+setopt extended_history # Record a timestamp and duration
+setopt hist_ignore_all_dups # Remove the same command from history
+setopt hist_ignore_dups # Don't record consecutive same command
+setopt hist_ignore_space # Don't record commands that begin with a space
+setopt hist_reduce_blanks # Remove superfluous spaces
+setopt share_history # Share history between terminals
+
+
+# --------------------------------
+# Prompt
+# --------------------------------
+autoload -U colors && colors
+autoload -Uz add-zsh-hook
+function set_prompt() {
+    PROMPT="%{$fg_bold[blue]%}%~%{$reset_color%}> "
+}
+add-zsh-hook -Uz precmd set_prompt
+
+
+# --------------------------------
+# Alias
+# --------------------------------
+
+# ls
+alias ll='ls -hlAFG --time-style=long-iso --color=always'
+
+# git
+alias g='git'
+
+# safety
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
