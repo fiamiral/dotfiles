@@ -11,10 +11,12 @@ PATH="${HOME}/.local/bin:${CARGO_HOME}/bin:${PATH}"
 # --------------------------------
 
 # Movement
-bindkey '^[[H' beginning-of-line # Home
+bindkey '^[[H' beginning-of-line # Home (Termux)
+bindkey '^[[1~' beginning-of-line # Home (Arch)
 bindkey "^[[5~"  beginning-of-buffer-or-history # PgDn
 bindkey "^[[6~"  end-of-buffer-or-history # PgUp
-bindkey '^[[F' end-of-line # End
+bindkey '^[[F' end-of-line # End (Termux)
+bindkey '^[[4~' end-of-line # End (Arch)
 
 bindkey "^[[1;5C" forward-word # C-Left
 bindkey "^[[1;5D" backward-word # C-Right
