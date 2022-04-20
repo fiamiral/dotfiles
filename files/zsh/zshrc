@@ -62,6 +62,11 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor) # Activate highighters
 typeset -A ZSH_HIGHLIGHT_PATTERNS # Declare the variable
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
+{{#if (is_executable "vivid")}}
+# LS_COLORS
+export LS_COLORS="$(vivid generate snazzy)"
+{{/if}}
+
 
 # --------------------------------
 # History
