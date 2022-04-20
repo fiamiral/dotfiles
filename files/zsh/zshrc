@@ -79,17 +79,6 @@ setopt share_history # Share history between terminals
 
 
 # --------------------------------
-# Prompt
-# --------------------------------
-autoload -U colors && colors
-autoload -Uz add-zsh-hook
-function set_prompt() {
-    PROMPT="%{$fg_bold[blue]%}%~%{$reset_color%}> "
-}
-add-zsh-hook -Uz precmd set_prompt
-
-
-# --------------------------------
 # Alias
 # --------------------------------
 
@@ -103,3 +92,10 @@ alias g='git'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
+# --------------------------------
+# Prompt
+# --------------------------------
+
+# Starship
+eval "$(starship init zsh)"

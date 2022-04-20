@@ -10,3 +10,4 @@ depends = []
 [zsh.files]
 "files/zsh/zshenv" = "~/.zshenv"
 "files/zsh/zshrc" = "~/.config/zsh/.zshrc"
+"files/starship/starship.toml" = "~/.config/starship.toml"
