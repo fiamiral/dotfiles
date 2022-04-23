@@ -64,7 +64,7 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
 {{#if (is_executable "vivid")}}
 # LS_COLORS
-export LS_COLORS="$(vivid generate snazzy)"
+export LS_COLORS="$(vivid generate nord)"
 {{/if}}
 
 
