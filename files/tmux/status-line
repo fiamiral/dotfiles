@@ -1,0 +1,16 @@
+#!/bin/sh
+
+__load_avg() {
+  printf "LA: "
+  uptime | sed 's/.*average: \([0-9.]\+\),.*/\1/'
+}
+
+__datetime() {
+  date -u +"%Y-%m-%d %H:%M:%S"
+}
+
+main() {
+  echo "$(__load_avg) | $(__datetime)"
+}
+
+main
