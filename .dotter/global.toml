@@ -16,3 +16,6 @@ depends = []
 
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
+
+[qtile.files]
+"files/qtile/config.py" = "~/.config/qtile/config.py"
