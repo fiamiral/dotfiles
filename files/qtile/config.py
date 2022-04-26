@@ -38,8 +38,8 @@ groups = [
 
 layouts = [
     layout.Columns(
-        border_focus = "#D08770",
-        border_normal = "#8FBCBB",
+        border_focus = "#88C0D0",
+        border_normal = "#D08770",
         border_on_single = True,
         margin = 8,
     ),
@@ -52,10 +52,10 @@ screens = [
     Screen(
         bottom=bar.Bar([
                 widget.GroupBox(
-                    this_current_screen_border = "#D08770",
-                    this_screen_border = "#D08770",
-                    other_current_screen_border = "#88C0D0",
-                    other_screen_border = "#88C0D0",
+                    this_current_screen_border = "#88C0D0",
+                    this_screen_border = "#88C0D0",
+                    other_current_screen_border = "#D08770",
+                    other_screen_border = "#D08770",
                     inactive = "#4C566A",
                 ),
                 widget.Spacer(),
@@ -73,10 +73,10 @@ screens = [
     Screen(
         bottom=bar.Bar([
                 widget.GroupBox(
-                    this_current_screen_border = "#D08770",
-                    this_screen_border = "#D08770",
-                    other_current_screen_border = "#88C0D0",
-                    other_screen_border = "#88C0D0",
+                    this_current_screen_border = "#88C0D0",
+                    this_screen_border = "#88C0D0",
+                    other_current_screen_border = "#D08770",
+                    other_screen_border = "#D08770",
                     inactive = "#4C566A",
                 ),
                 widget.Spacer(),
