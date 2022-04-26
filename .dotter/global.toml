@@ -19,3 +19,6 @@ depends = []
 
 [qtile.files]
 "files/qtile/config.py" = "~/.config/qtile/config.py"
+
+[alacritty.files]
+"files/alacritty/alacritty.yml" = "~/.config/alacritty/alacritty.yml"
