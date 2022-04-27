@@ -35,8 +35,11 @@ bindkey "^[" send-break # Esc for cancel
 
 # zsh-autocomplete (https://github.com/marlonrichert/zsh-autocomplete)
 # Real-time type-ahead autocompletion to Zsh
-zi light marlonrichert/zsh-autocomplete # TODO: turbo loading
 zstyle ':autocomplete:*' insert-unambiguous yes # Tab first inserts a substring common to all listed completions, if any.
+zi light marlonrichert/zsh-autocomplete # TODO: turbo loading
+bindkey '\e[A' up-line-or-history # Use builtin history cycle
+bindkey '\eOA' up-line-or-history
+
 
 # zsh-completions (https://github.com/zsh-users/zsh-completions)
 # Additional completion definitions for Zsh
