@@ -4,8 +4,12 @@
 depends = []
 
 [default.files]
+"files/common.env" = "~/.config/common.env"
 
 [default.variables]
+
+[zsh]
+depends = ["default"]
 
 [zsh.files]
 "files/zsh/zshenv" = "~/.zshenv"
@@ -13,6 +17,7 @@ depends = []
 "files/starship/starship.toml" = "~/.config/starship.toml"
 "files/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
 "files/tmux/status-line" = "~/.config/tmux/status-line"
+
 
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
