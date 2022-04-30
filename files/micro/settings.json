@@ -1,0 +1,7 @@
+{
+    "colorscheme": "nord-tc",
+    "parsecursor": true,
+    "rmtrailingws": true,
+    "tabmovement": true,
+    "tabstospaces": true
+}

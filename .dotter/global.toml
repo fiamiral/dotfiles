@@ -22,3 +22,6 @@ depends = []
 
 [alacritty.files]
 "files/alacritty/alacritty.yml" = "~/.config/alacritty/alacritty.yml"
+
+[micro.files]
+"files/micro/settings.json" = "~/.config/micro/settings.json"
