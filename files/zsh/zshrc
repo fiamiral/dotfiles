@@ -110,6 +110,9 @@ alias rm='rm -i'
 alias cat='bat'
 {{/if}}
 
+# editor
+alias ed="${VISUAL}"
+
 
 # --------------------------------
 # Prompt
