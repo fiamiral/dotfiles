@@ -19,6 +19,7 @@ keys = [
 
     # Launch
     Key([mod], "s", lazy.spawn("alacritty"), desc="Launch alacritty"),
+    Key([mod], "f", lazy.spawn("firefox"), desc="Launch firefox"),
 
     # ScratchPad
     Key([mod], "i", lazy.group["scratchpad"].dropdown_toggle("term1")),
