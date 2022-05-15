@@ -1,0 +1,5 @@
+# Set the theme to nord
+--theme="Nord"
+
+# Use Rust syntax for .ers
+--map-syntax "*.ers:Rust"
