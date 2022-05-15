@@ -16,7 +16,7 @@ depends = ["default"]
 "files/zsh/zshrc" = "~/.config/zsh/.zshrc"
 "files/starship/starship.toml" = "~/.config/starship.toml"
 "files/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
-
+"bin/chse" = "~/.local/bin/chse"
 
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
