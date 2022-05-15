@@ -17,9 +17,8 @@ parse_list() {
                 | sed "s/ /\n/g" \
                 | sed -E "s/(.+)\/(.+)$/\x1b[32m\x1b[1m${name}::\x1b[36m\2\x1b[0m \1\/\2/" \
                 | sed 's|'"${HOME}"'|~|'
-        else
-            echo -e "\e[36m\e[1m${name} ${tilde_dir}\e[0m"
         fi
+        echo -e "\e[36m\e[1m${name} ${tilde_dir}\e[0m"
     done
 }
 
