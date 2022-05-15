@@ -27,6 +27,10 @@
     # Prevent multibyte characters from being garbled
     quotepath = false
 
+[diff]
+    # Use difftastic as a diff tool
+    external = difft
+
 [init]
     # Set default branch name
     defaultBranch = main
