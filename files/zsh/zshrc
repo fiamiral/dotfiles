@@ -120,3 +120,15 @@ alias ed="${VISUAL}"
 
 # Starship
 eval "$(starship init zsh)"
+
+
+# --------------------------------
+# Autostart
+# --------------------------------
+
+if [[ ! -n $TMUX ]]; then
+    if ! tmux has-session -t main 2>/dev/null; then
+        tmux new-session -d -s main -c "${HOME}"
+    fi
+    tmux attach-session -t main
+fi
