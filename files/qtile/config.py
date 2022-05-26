@@ -62,6 +62,8 @@ screens = [
                 widget.Spacer(),
                 widget.WindowName(),
                 widget.Prompt(),
+                widget.Battery(),
+                widget.Sep(),
                 widget.Volume(fmt="🔊: {}"),
                 widget.Sep(),
                 widget.Clock(format="%Y-%m-%d %H:%M:%S"),
