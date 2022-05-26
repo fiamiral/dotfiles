@@ -1,0 +1,74 @@
+#!/bin/bash
+
+_template() {
+cat << EOF
+✨ feat:     A new feature
+🐛 fix:      A bug fix
+📝 docs:     Documentation only changes
+👕 style:    Changes that do not affect the meaning of the code (white-space, formatting,
+🎨 refactor: A code change that neither fixes a bug nor adds a feature
+🐎 perf:     A code change that improves performance
+✅ test:     Adding missing or correcting existing tests
+🍰 chore:    Changes to the build process or auxiliary tools and libraries such as docume
+EOF
+}
+
+_choose_prefix() {
+    fzf-tmux -p -- --height=40% --reverse --border \
+        --inline-info \
+        | sed -E s/:.*//
+}
+
+_ask_confirm() {
+    while true; do
+        printf "Confirm? [y/n]: "
+        read -r is_confirm
+        if [ "${is_confirm}" = 'y' ]; then
+            return 0
+        elif [ "${is_confirm}" = 'n' ]; then
+            return 1
+        fi
+    done
+}
+
+_result() {
+    echo "Commit message: "
+    echo "${1}"
+    if _ask_confirm ; then
+        git commit -m "${1}"
+    else
+        echo "Abort"
+        return 1
+    fi
+}
+
+printf "Choose prefix: "
+message=$(_template | _choose_prefix)
+echo "${message}"
+
+
+printf "Input scope (optional): "
+read -r scope
+if [ "${scope}" != "" ]; then
+    message="${message}[${scope}]:"
+else
+    message="${message}:"
+fi
+
+
+echo "Input subject: "
+yes '*********|' | head --lines 5 | tr -d '\n'
+echo ''
+printf '%s ' "${message}"
+read -r subject
+message="${message} ${subject}"
+
+
+echo "Input body (optional):"
+read -r body
+if [ "${body}" != "" ]; then
+    message="${message}"'\n\n'"${body}"
+fi
+
+
+_result "${message}"
