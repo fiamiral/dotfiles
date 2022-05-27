@@ -32,3 +32,7 @@ depends = ["default"]
 
 [micro.files]
 "files/micro/settings.json" = "~/.config/micro/settings.json"
+
+[fcitx5.files]
+"files/fcitx5/config" = "~/.config/fcitx5/config"
+"files/fcitx5/profile" = { target = "~/.config/fcitx5/profile", type = "template" }
