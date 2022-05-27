@@ -52,7 +52,7 @@ groups = [
             width = 0.5, height = 0.5,
             x = 0.25, y = 0.25),
     ]),
-    Group("main"),
+    Group(name="main", spawn=["alacritty"]),
 ]
 
 layouts = [
