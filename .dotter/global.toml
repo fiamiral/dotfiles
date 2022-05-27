@@ -29,6 +29,8 @@ depends = ["default"]
 
 [alacritty.files]
 "files/alacritty/alacritty.yml" = "~/.config/alacritty/alacritty.yml"
+[alacritty.variables]
+fontsize = "13"
 
 [micro.files]
 "files/micro/settings.json" = "~/.config/micro/settings.json"

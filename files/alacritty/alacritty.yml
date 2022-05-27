@@ -55,7 +55,7 @@ colors: # (nord: https://github.com/arcticicestudio/nord-alacritty)
       background: '#434c5e'
 
 font:
-  size: 13
+  size: {{fontsize}}
   normal:
     family: Cica
     style: Regular
