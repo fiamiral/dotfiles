@@ -1,7 +1,19 @@
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+
+import subprocess
+
+# Startup
+@hook.subscribe.startup_once
+def autostart():
+    list = [
+        ["picom"],
+    ]
+    for p in list:
+        subprocess.Popen(p)
+
 
 # Set modkey to Super
 mod = "mod4"
