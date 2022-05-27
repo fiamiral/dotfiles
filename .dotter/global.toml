@@ -36,3 +36,4 @@ depends = ["default"]
 [fcitx5.files]
 "files/fcitx5/config" = "~/.config/fcitx5/config"
 "files/fcitx5/profile" = { target = "~/.config/fcitx5/profile", type = "template" }
+"files/fcitx5/xprofile" = "~/.xprofile"
