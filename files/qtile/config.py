@@ -3,6 +3,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, 
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+import os
 import subprocess
 
 # Startup
@@ -14,10 +15,16 @@ def autostart():
     for p in list:
         subprocess.Popen(p)
 
+# Run command wrapper
+@lazy.function
+def run_cmd(qtile, cmd):
+    env = os.environ.copy()
+    env["PATH"] = env["HOME"] + "/.local/bin:" + env["PATH"]
+    subprocess.Popen(cmd, env=env)
+
 
 # Set modkey to Super
 mod = "mod4"
-
 
 # Keybinds
 keys = [
@@ -33,6 +40,8 @@ keys = [
     Key([mod], "s", lazy.spawn("alacritty"), desc="Launch alacritty"),
     Key([mod], "f", lazy.spawn("firefox"), desc="Launch firefox"),
 
+    Key([mod], "g", run_cmd("qtile-switch-group"), desc="Switch group"),
+
     # ScratchPad
     Key([mod], "i", lazy.group["scratchpad"].dropdown_toggle("term1")),
 ]
@@ -43,10 +52,7 @@ groups = [
             width = 0.5, height = 0.5,
             x = 0.25, y = 0.25),
     ]),
-    Group("1"),
-    Group("2"),
-    Group("3"),
-    Group("4"),
+    Group("main"),
 ]
 
 layouts = [

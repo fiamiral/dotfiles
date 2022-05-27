@@ -26,6 +26,7 @@ depends = ["default"]
 
 [qtile.files]
 "files/qtile/config.py" = "~/.config/qtile/config.py"
+"bin/qtile-switch-group" = "~/.local/bin/qtile-switch-group"
 
 [alacritty.files]
 "files/alacritty/alacritty.yml" = "~/.config/alacritty/alacritty.yml"
