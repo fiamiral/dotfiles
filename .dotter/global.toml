@@ -29,6 +29,7 @@ depends = ["default"]
 
 [alacritty.files]
 "files/alacritty/alacritty.yml" = "~/.config/alacritty/alacritty.yml"
+"bin/fzf-float" = "~/.local/bin/fzf-float"
 [alacritty.variables]
 fontsize = "13"
 
