@@ -33,18 +33,38 @@ bindkey "^[" send-break # Esc for cancel
 # Completion
 # --------------------------------
 
-# zsh-autocomplete (https://github.com/marlonrichert/zsh-autocomplete)
-# Real-time type-ahead autocompletion to Zsh
-zstyle ':autocomplete:*' insert-unambiguous yes # Tab first inserts a substring common to all listed completions, if any.
-zi light marlonrichert/zsh-autocomplete # TODO: turbo loading
-bindkey '\e[A' up-line-or-history # Use builtin history cycle
-bindkey '\eOA' up-line-or-history
+# fzf-tab (https://github.com/Aloxaf/fzf-tab)
+# Replace zsh's default completion selection menu with fzf!
+# required
+zicompinit
+# minimum size of completion window
+zstyle ':fzf-tab:*' popup-pad 60 20
+# completion with fzf and tmux popup
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview ' \
+    exa -alFT --no-permissions --no-filesize --no-user --no-time --git \
+    --level=2 --ignore-glob=".git" --color=always $realpath'
+# tab to contrnue completion
+zstyle ':fzf-tab:*' continuous-trigger tab
+# space to print -uery and exit completion
+zstyle ':fzf-tab:*' print-query space
+
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+	fzf-preview 'echo ${(P)word}'
+# emable plugin
+zi light aLoxaf/fzf-tab
 
 
 # zsh-completions (https://github.com/zsh-users/zsh-completions)
 # Additional completion definitions for Zsh
 zi ice lucid wait as'completion'
 zi light zsh-users/zsh-completions
+
 
 # zsh-autosuggestions (https://github.com/zsh-users/zsh-autosuggestions)
 # Fish-like fast/unobtrusive autosuggestions for zsh
