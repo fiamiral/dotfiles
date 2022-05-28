@@ -28,6 +28,33 @@ zi light jirutka/zsh-shift-select
 # Misc
 bindkey "^[" send-break # Esc for cancel
 
+# --------------------------------
+# ZLE
+# --------------------------------
+
+function _fzf-select-files() {
+    prefix="${LBUFFER: -1:1}"
+    search_path='.'
+    if [[ "${prefix}" == '~' ]]; then
+        search_path="${HOME}"
+        LBUFFER="${LBUFFER:0:-1}"
+        CURSOR=$(($CURSOR - 1))
+    elif [[ "${prefix}" == '/' ]]; then
+        search_path='/'
+        LBUFFER="${LBUFFER:0:-1}"
+        CURSOR=$(($CURSOR - 1))
+    fi
+
+    result=$("${ZDOTDIR}/scripts/fzf-select-files" "${search_path}" \
+        | tr '\n' ' ' | sed 's/ $//')
+
+    BUFFER="${BUFFER}$result"
+    CURSOR=${#BUFFER}
+}
+
+zle -N _fzf-select-files
+bindkey '^f' _fzf-select-files
+
 
 # --------------------------------
 # Completion

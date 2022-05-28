@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SEARCH_PATH="$1"
+
+list() {
+    fd --color=always . "${SEARCH_PATH}"
+}
+
+fuzzy_finder() {
+    fzf-tmux -p 80%,80% -- \
+        --multi --ansi --preview='
+            if [ -d {} ]; then
+                exa -alFT --no-permissions --no-filesize --no-user --no-time \
+                    --git --level=2 --color=always --ignore-glob=".git/" {}
+            else
+                bat --color=always {}
+            fi
+        ' \
+        "--bind=backward-eof:print-query,space:print-query,tab:toggle" \
+        --header="${SEARCH_PATH}"
+}
+
+list | fuzzy_finder

@@ -15,6 +15,7 @@ depends = ["default"]
 "files/zsh/home.zshenv" = "~/.zshenv"
 "files/zsh/zshenv" = "~/.config/zsh/.zshenv"
 "files/zsh/zshrc" = "~/.config/zsh/.zshrc"
+"files/zsh/scripts/fzf-select-files" = "~/.config/zsh/scripts/fzf-select-files"
 "files/starship/starship.toml" = "~/.config/starship.toml"
 "files/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
 "bin/chse" = "~/.local/bin/chse"
