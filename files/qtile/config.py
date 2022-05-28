@@ -53,6 +53,7 @@ groups = [
             x = 0.25, y = 0.25),
     ]),
     Group(name="main", spawn=["alacritty"]),
+    Group(name="web", spawn=["firefox"]),
 ]
 
 layouts = [
