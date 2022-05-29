@@ -72,6 +72,9 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# set default keybind
+zstyle 'fzf-tab:complete:*' fzf-bindings \
+    'backward-eof:abort'
 # preview directory when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview ' \
     exa -alFT --no-permissions --no-filesize --no-user --no-time --git \
