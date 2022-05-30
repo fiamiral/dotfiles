@@ -1,0 +1,68 @@
+# i3 config file (v4)
+
+# ----------------
+#     keybind
+# ----------------
+# launch applications
+bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
+bindsym Mod4+Return exec --no-startup-id alacritty
+
+# focus
+bindsym Mod4+n focus next
+
+# float and move window
+bindsym Mod4+f floating toggle
+
+# drag to move and resize
+floating_modifier Mod4
+
+# scratchpad
+bindsym Mod4+i scratchpad show
+
+# quits
+bindsym Mod4+q kill
+bindsym Mod4+Ctrl+q exit
+
+
+# ----------------
+#   scratchpad
+# ----------------
+# rule for scratchpad
+for_window [instance="scratchpad"] floating enable, move scratchpad
+# autostart scratchpad
+exec --no-startup-id alacritty --class scratchpad
+
+
+# ----------------
+#   appearance
+# ----------------
+# hide title bar
+default_border pixel 2
+default_floating_border pixel 2
+
+# window gap
+gaps inner 5
+
+# font
+font pango:Cica 13
+
+# i3 statusbar
+bar {
+    status_command i3status
+}
+
+# -----------------
+# autostart
+# -----------------
+
+# rename default workspace to main
+exec --no-startup-id i3 rename workspace 1 to main
+
+# set wallpaper
+exec --no-startup-id feh --bg-scale ~/sandbox/wallpaper.jpg
+
+# start IME
+exec --no-startup-id fcitx5
+
+# start compositor
+exec --no-startup-id picom
