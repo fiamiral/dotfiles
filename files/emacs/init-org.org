@@ -28,6 +28,23 @@
   (mouse-wheel-mode t)
 #+end_src
 
+** backups
+*** number of backup stored
+#+begin_src emacs-lisp
+  (setq kept-new-versions 5)
+#+end_src
+*** autodelete of backup file
+#+begin_src emacs-lisp
+  (setq delete-old-versions t)
+#+end_src
+*** location of backup file
+#+begin_src emacs-lisp
+  (setq backup-directory-alist '((".*" . "~/.config/emacs/backups")))
+#+end_src
+*** do not create auto save list file
+#+begin_src emacs-lisp
+  (setq auto-save-list-file-prefix nil)
+#+end_src
 * keybind
 ** quit by 'C-q'
 #+begin_src emacs-lisp
