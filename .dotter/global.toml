@@ -46,6 +46,9 @@ fontsize = "13"
 [i3.files]
 "files/i3/config" = "~/.config/i3/config"
 
+[sway.files]
+"files/sway/config" = "~/.config/sway/config"
+
 [emacs.files]
 "files/emacs/init.el" = "~/.config/emacs/init.el"
 "files/emacs/init-org.org" = "~/.config/emacs/init-org.org"

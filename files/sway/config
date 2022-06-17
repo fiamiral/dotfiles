@@ -1,0 +1,44 @@
+# ----------------
+#     Keybind
+# ----------------
+
+# set modifier
+set $mod Mod4
+
+# launch
+## terminal
+bindsym $mod+Return exec alacritty
+## browser
+bindsym $mod+b exec firefox
+
+# quit
+## kill window
+bindsym $mod+q kill
+## exit sway
+bindsym $mod+Ctrl+q exit
+
+
+# ----------------
+#   appearance
+# ----------------
+
+# hide title bar
+default_border pixel 2
+default_floating_border pixel 2
+
+# window gap
+gaps inner 5
+
+# font
+font pango:Cica 13
+
+# wallpaper
+output "*" background ~/sandbox/wallpaper.jpg fill
+
+
+# ----------------
+#    Autostart
+# ----------------
+
+# start IME
+exec --no-startup-id fcitx5
