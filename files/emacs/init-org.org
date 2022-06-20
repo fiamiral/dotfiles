@@ -75,3 +75,8 @@
 #+begin_src emacs-lisp
   (setq linum-format "%d ")
 #+end_src
+* org-mode
+** indent heading
+#+begin_src emacs-lisp
+  (setq org-startup-indented t)
+#+end_src
