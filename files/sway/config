@@ -42,3 +42,6 @@ output "*" background ~/sandbox/wallpaper.jpg fill
 
 # start IME
 exec --no-startup-id fcitx5
+
+# auto mount
+exec udiskie
