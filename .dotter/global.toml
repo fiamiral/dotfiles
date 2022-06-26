@@ -48,6 +48,8 @@ fontsize = "13"
 
 [sway.files]
 "files/sway/config" = "~/.config/sway/config"
+"files/waybar/config" = "~/.config/waybar/config"
+"files/waybar/style.css" = "~/.config/waybar/style.css"
 
 [emacs.files]
 "files/emacs/init.el" = "~/.config/emacs/init.el"
