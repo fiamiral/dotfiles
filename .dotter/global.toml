@@ -47,6 +47,8 @@ fontsize = "13"
 "files/i3/config" = "~/.config/i3/config"
 
 [sway.files]
+"files/sway/sway-start.sh" = { target = "/usr/local/bin/sway-start.sh", type = "template", owner = "root" }
+"files/sway/sway.desktop" = { target = "/usr/share/wayland-sessions/sway-script.desktop", type = "template", owner = "root" }
 "files/sway/config" = "~/.config/sway/config"
 "files/waybar/config" = "~/.config/waybar/config"
 "files/waybar/style.css" = "~/.config/waybar/style.css"
