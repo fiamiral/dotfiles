@@ -1,0 +1,13 @@
+#!/bin/bash
+
+files=$(unbuffer git status -s \
+        | fzf --ansi --multi \
+        | awk '{print $2}' \
+        | tr '\n' ' ')
+
+if [[ -n "$files" ]]; then
+    # shellcheck disable=SC2086
+    git add $files
+else
+    exit 1
+fi

@@ -17,6 +17,9 @@
     graph = log --oneline --graph --date=short --pretty=\"format:%C(yellow)%h%Creset %C(cyan)%ad %C(green)%an %C(reset)%s %C(red bold)%d%C(reset)\"
     gr = graph
 
+    #interactive add
+    a = !${XDG_CONFIG_HOME}/git/script/fzf-gadd
+
     # Commit with Emoji
     ecom = !emoji-commit
 
