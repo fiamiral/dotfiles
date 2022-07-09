@@ -50,6 +50,8 @@ function _fzf-select-files() {
 
     BUFFER="${BUFFER}$result"
     CURSOR=${#BUFFER}
+    # reload zsh-autosuggestions
+    zle autosuggest-enable
 }
 
 zle -N _fzf-select-files
