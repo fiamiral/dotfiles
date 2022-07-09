@@ -27,6 +27,7 @@ zi light jirutka/zsh-shift-select
 
 # Misc
 bindkey "^[" send-break # Esc for cancel
+KEYTIMEOUT=1 # remove wait when press escape
 
 # --------------------------------
 # ZLE
