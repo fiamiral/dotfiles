@@ -10,6 +10,8 @@ set $mod Mod4
 bindsym $mod+Return exec alacritty
 ## browser
 bindsym $mod+b exec firefox
+## launcher
+bindsym $mod+r exec 'wofi --show drun'
 
 # quit
 ## kill window
