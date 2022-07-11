@@ -5,13 +5,16 @@
 # set modifier
 set $mod Mod4
 
+# reload
+bindsym $mod+r reload
+
 # launch
 ## terminal
 bindsym $mod+Return exec alacritty
 ## browser
 bindsym $mod+b exec firefox
 ## launcher
-bindsym $mod+r exec 'wofi --show drun'
+bindsym $mod+l exec 'wofi --show drun'
 
 # quit
 ## kill window
