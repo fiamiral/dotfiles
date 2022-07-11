@@ -37,6 +37,13 @@ output "*" background ~/sandbox/wallpaper.jpg fill
 
 
 # ----------------
+#    Floating
+# ----------------
+
+for_window [instance="dialog"] floating enable
+
+
+# ----------------
 #    Autostart
 # ----------------
 
