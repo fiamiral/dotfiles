@@ -48,3 +48,6 @@ exec udiskie
 
 # start waybar
 exec waybar
+
+# fix xdg-desktop-portal timeout
+exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
