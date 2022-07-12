@@ -8,6 +8,9 @@ set $mod Mod4
 # reload
 bindsym $mod+r reload
 
+# switch workspace
+bindsym $mod+n exec "fzf-switch-workspace"
+
 # launch
 ## terminal
 bindsym $mod+Return exec alacritty
