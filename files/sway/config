@@ -14,6 +14,9 @@ bindsym $mod+n exec "fzf-switch-workspace"
 # drag to move window
 floating_modifier $mod
 
+# scratchpad
+bindsym $mod+o scratchpad show
+
 # launch
 ## terminal
 bindsym $mod+Return exec alacritty
@@ -53,6 +56,15 @@ output "*" background ~/sandbox/wallpaper.jpg fill
 
 for_window [instance="dialog"] floating enable
 
+
+# ----------------
+#   Scratchpad
+# ----------------
+
+# rule for scratchpad
+for_window [instance="scratchpad"] floating enable, move scratchpad
+# autostart scratchpad
+exec alacritty --class scratchpad
 
 # ----------------
 #    Autostart
