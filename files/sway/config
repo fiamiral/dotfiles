@@ -11,6 +11,9 @@ bindsym $mod+r reload
 # switch workspace
 bindsym $mod+n exec "fzf-switch-workspace"
 
+# drag to move window
+floating_modifier $mod
+
 # launch
 ## terminal
 bindsym $mod+Return exec alacritty
