@@ -9,7 +9,7 @@ set $mod Mod4
 bindsym $mod+r reload
 
 # switch workspace
-bindsym $mod+n exec "fzf-switch-workspace"
+bindsym $mod+s exec "fzf-switch-workspace"
 
 # drag to move window
 floating_modifier $mod
