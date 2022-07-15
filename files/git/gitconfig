@@ -6,6 +6,7 @@
     # Shorts
     cm = commit
     st = status
+    di = diff
 
     # Show all aliases
     alias = !git config --get-regexp \"alias.\" | sed s/alias.// | sort
