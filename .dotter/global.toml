@@ -61,3 +61,6 @@ fontsize = "13"
 
 [pacman.files]
 "files/paru/paru.conf" = "~/.config/paru/paru.conf"
+
+[greetd.files]
+"files/greetd/config.toml" = { target = "/etc/greetd/config.toml", type= "template", owner = "root" }
