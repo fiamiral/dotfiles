@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -eux
+
+_select_name() {
+    sway-get-simpletree \
+    | jq -r '.nodes |= map(.name) | .nodes |= join(",") | {name, nodes} | join(": ")' \
+    | wofi --dmenu \
+    | cut -d: -f1
+}
+
+_main() {
+    local name
+    name=$(_select_name)
+    if [[ -n $name ]]; then
+        swaymsg workspace "${name}"
+    fi
+}
+
+_main
