@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=i3(Script)
+Comment=improved dynamic tiling window manager
+Exec=startx /etc/X11/xinit/xinitrc-script
+Type=Application
