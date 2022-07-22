@@ -1,41 +1,41 @@
 # i3 config file (v4)
 
 # ----------------
-#     keybind
+#     Keybind
 # ----------------
-# launch applications
-bindsym Mod4+d exec rofi -show drun
-bindsym Mod4+Return exec --no-startup-id alacritty
 
-# focus
-bindsym Mod4+n focus next
-
-# float and move window
-bindsym Mod4+f floating toggle
+# set modifier
+set $mod Mod4
 
 # drag to move and resize
-floating_modifier Mod4
+floating_modifier $mod
 
 # scratchpad
-bindsym Mod4+i scratchpad show
+bindsym $mod+i scratchpad show
 
-# quits
-bindsym Mod4+q kill
-bindsym Mod4+Ctrl+q exit
+# launch
+## terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+## launcher
+bindsym $mod+d exec rofi -show drun
+
+# focus
+bindsym $mod+n focus next
+
+# float and move window
+bindsym $mod+f floating toggle
+
+# quit
+## kill window
+bindsym $mod+q kill
+## exit i3wm
+bindsym $mod+Ctrl+q exit
 
 
 # ----------------
-#   scratchpad
+#   Appearance
 # ----------------
-# rule for scratchpad
-for_window [instance="scratchpad"] floating enable, move scratchpad
-# autostart scratchpad
-exec --no-startup-id alacritty --class scratchpad
 
-
-# ----------------
-#   appearance
-# ----------------
 # hide title bar
 default_border pixel 2
 default_floating_border pixel 2
@@ -45,6 +45,12 @@ gaps inner 5
 
 # font
 font pango:Cica 13
+
+# wallpaper
+exec --no-startup-id feh --bg-scale --no-fehbg ~/sandbox/wallpaper.jpg
+
+# set default workspace to "main"
+exec --no-startup-id i3 rename workspace 1 to main
 
 # i3 statusbar
 bar {
@@ -56,15 +62,20 @@ bar {
     }
 }
 
-# -----------------
-# autostart
-# -----------------
 
-# rename default workspace to main
-exec --no-startup-id i3 rename workspace 1 to main
+# ----------------
+#   Scratchpad
+# ----------------
 
-# set wallpaper
-exec --no-startup-id feh --bg-scale --no-fehbg ~/sandbox/wallpaper.jpg
+# rule for scratchpad
+for_window [instance="scratchpad"] floating enable, move scratchpad
+# autostart scratchpad
+exec --no-startup-id alacritty --class scratchpad
+
+
+# -----------------
+#    Autostart
+# -----------------
 
 # start IME
 exec --no-startup-id fcitx5
