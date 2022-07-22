@@ -4,7 +4,7 @@
 #     keybind
 # ----------------
 # launch applications
-bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
+bindsym Mod4+d exec rofi -show drun
 bindsym Mod4+Return exec --no-startup-id alacritty
 
 # focus
