@@ -48,6 +48,8 @@ fontsize = "13"
 "files/i3/config" = "~/.config/i3/config"
 "files/i3/i3.desktop" = { target = "/usr/share/xsessions/i3-script.desktop", type = "template", owner = "root"}
 "files/i3/xinitrc" = { target = "/etc/X11/xinit/xinitrc-script", type = "template", owner = "root"}
+"files/rofi/nord.rasi" = "~/.config/rofi/themes/nord.rasi"
+"files/rofi/config.rasi" = "~/.config/rofi/config.rasi"
 
 [sway.files]
 "files/sway/sway-start.sh" = { target = "/usr/local/bin/sway-start.sh", type = "template", owner = "root" }
