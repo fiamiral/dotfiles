@@ -11,13 +11,13 @@ set $mod Mod4
 floating_modifier $mod
 
 # scratchpad
-bindsym $mod+i scratchpad show
+bindsym $mod+o scratchpad show
 
 # launch
 ## terminal
 bindsym $mod+Return exec --no-startup-id alacritty
 ## launcher
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+l exec rofi -show drun
 
 # focus
 bindsym $mod+n focus next
