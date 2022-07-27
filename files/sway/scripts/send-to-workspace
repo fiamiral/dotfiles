@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -eux
+
+_get_workspace_list() {
+    "${HOME}/.config/sway/scripts/get-simpletree" \
+    | jq -r '.nodes |= "[" + ( length | tostring ) + "]" | {nodes, name} | join(" ")'
+}
+
+_select() {
+    wofi --dmenu \
+    | sed 's/^\[[0-9]\+\] //' | tr ' ' '_'
+}
+
+_main() {
+    local name
+    name=$(_get_workspace_list | _select)
+    if [[ -n $name ]]; then
+        swaymsg move workspace "${name}"
+    fi
+}
+
+_main
