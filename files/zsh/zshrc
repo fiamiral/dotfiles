@@ -1,5 +1,7 @@
 # Load ZI (https://github.com/z-shell/zi/)
-# Install: git clone https://github.com/z-shell/zi.git "${HOME}/.local/share/zi/bin"
+if [[ ! -d "${XDG_DATA_HOME}/zi/bin" ]]; then
+    git clone https://github.com/z-shell/zi.git "${HOME}/.local/share/zi/bin"
+fi
 declare -A ZI; ZI[HOME_DIR]="${XDG_DATA_HOME}/zi" # Set directory
 source "${ZI[HOME_DIR]}/bin/zi.zsh"
 
