@@ -165,8 +165,12 @@ setopt share_history # Share history between terminals
 
 
 # --------------------------------
-# Alias
+# Alias & Abbr
 # --------------------------------
+
+# zabrze (https://github.com/Ryooooooga/zabrze)
+# zsh abbraviation expansion plugin
+eval "$(zabrze init --bind-keys)"
 
 # ls
 {{#if (is_executable "exa")}}
@@ -175,9 +179,6 @@ alias lt='exa -alFT --no-permissions --no-filesize --no-user --no-time --git --l
 {{else}}
 alias ll='ls -hlAFG --time-style=long-iso --color=always'
 {{/if}}
-
-# git
-alias g='git'
 
 # safety
 alias cp='cp -i'

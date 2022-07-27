@@ -3,11 +3,6 @@
     path = config.local
 
 [alias]
-    # Shorts
-    cm = commit
-    st = status
-    di = diff
-
     # Show all aliases
     alias = !git config --get-regexp \"alias.\" | sed s/alias.// | sort
 
@@ -16,7 +11,6 @@
 
     # Show pritty praph
     graph = log --oneline --graph --date=short --pretty=\"format:%C(yellow)%h%Creset %C(cyan)%ad %C(green)%an %C(reset)%s %C(red bold)%d%C(reset)\"
-    gr = graph
 
     #interactive add
     a = !${XDG_CONFIG_HOME}/git/script/fzf-gadd

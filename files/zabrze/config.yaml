@@ -1,0 +1,25 @@
+abbrevs:
+  # git
+  - name: git
+    abbr: g
+    snippet: git
+  - name: git commit
+    abbr: cm
+    snippet: commit
+    global: true
+    context: '^git '
+  - name: git status
+    abbr: st
+    snippet: status
+    global: true
+    context: '^git '
+  - name: git diff
+    abbr: di
+    snippet: diff
+    global: true
+    context: '^git '
+  - name: git graph
+    abbr: gr
+    snippet: graph
+    global: true
+    context: '^git '
