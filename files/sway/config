@@ -9,7 +9,7 @@ set $mod Mod4
 bindsym $mod+r reload
 
 # switch workspace
-bindsym $mod+s exec "sway-switch-workspace"
+bindsym $mod+s exec "${HOME}/.config/sway/scripts/switch-workspace"
 
 # drag to move window
 floating_modifier $mod

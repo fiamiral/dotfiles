@@ -3,7 +3,7 @@
 set -eux
 
 _select_name() {
-    sway-get-simpletree \
+    "${HOME}/.config/sway/scripts/get-simpletree" \
     | jq -r '.nodes |= map(.name) | .nodes |= join(",") | {name, nodes} | join(": ")' \
     | wofi --dmenu \
     | cut -d: -f1
