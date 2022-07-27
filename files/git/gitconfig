@@ -16,7 +16,7 @@
     a = !${XDG_CONFIG_HOME}/git/script/fzf-gadd
 
     # Commit with Emoji
-    ecom = !${XDG_CONFIG_HOME}/git/script/emoji-commit
+    emoji-commit = !${XDG_CONFIG_HOME}/git/script/emoji-commit
 
 [color]
     # Set to color
