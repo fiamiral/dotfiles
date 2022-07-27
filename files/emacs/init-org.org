@@ -67,13 +67,9 @@
 #+end_src
 * Appearance
 ** line number
-*** show line number
+*** use display-line-numbers
 #+begin_src emacs-lisp
-  (global-linum-mode t)
-#+end_src
-*** line number format
-#+begin_src emacs-lisp
-  (setq linum-format "%d ")
+  (global-display-line-numbers-mode t)
 #+end_src
 * org-mode
 ** indent heading
