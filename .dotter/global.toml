@@ -25,7 +25,7 @@ depends = ["default"]
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
 "files/git/fzf-gadd" = "~/.config/git/script/fzf-gadd"
-"bin/emoji-commit" = "~/.local/bin/emoji-commit"
+"files/git/emoji-commit" = "~/.config/git/script/emoji-commit"
 
 [qtile.files]
 "files/qtile/config.py" = "~/.config/qtile/config.py"
