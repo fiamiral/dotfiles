@@ -59,6 +59,12 @@
 #+begin_src emacs-lisp
   (setq auto-save-list-file-prefix nil)
 #+end_src
+** set custom-file to custom.el
+#+begin_src emacs-lisp
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file))
+#+end_src
 * keybind
 ** quit by 'C-q'
 #+begin_src emacs-lisp
