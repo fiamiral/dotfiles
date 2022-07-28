@@ -113,3 +113,29 @@
 #+begin_src emacs-lisp
   (setq org-startup-indented t)
 #+end_src
+* IDE
+** inline completionm by corfu
+[[https://github.com/minad/corfu][corfu]]
+[[https://codeberg.org/akib/emacs-corfu-terminal][emacs-corfu-terminal]]: dependency for use corfu in CUI
+corfu-auto: auto completion
+#+begin_src emacs-lisp
+  (package-install 'corfu)
+  (package-install 'corfu-terminal)
+
+  (global-corfu-mode)
+  (corfu-terminal-mode)
+  (setq-default corfu-auto t)
+#+end_src
+** minibuffer completion by fido-vertical-mode
+#+begin_src emacs-lisp
+  (fido-vertical-mode +1)
+#+end_src
+** extend completion by cape
+[[https://github.com/minad/cape][cape]]
+#+begin_src emacs-lisp
+  (package-install 'cape)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+#+end_src
+
