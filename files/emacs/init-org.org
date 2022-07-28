@@ -86,6 +86,11 @@
   (global-set-key "\C-f" 'isearch-forward-regexp)
 #+end_src
 * Appearance
+** nord theme
+#+begin_src emacs-lisp
+  (package-install 'nord-theme)
+  (load-theme 'nord t)
+#+end_src
 ** line number
 *** use display-line-numbers
 #+begin_src emacs-lisp
