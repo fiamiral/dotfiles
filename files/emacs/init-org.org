@@ -89,6 +89,12 @@
 #+begin_src emacs-lisp
   (global-set-key "\C-f" 'isearch-forward-regexp)
 #+end_src
+** jump cursor by 'C-SPC'
+[[https://github.com/abo-abo/avy][avy]]
+#+begin_src emacs-lisp
+  (package-install 'avy)
+  (global-set-key (kbd "C-@") 'avy-goto-char-timer)
+#+end_src
 * Appearance
 ** nord theme
 #+begin_src emacs-lisp
