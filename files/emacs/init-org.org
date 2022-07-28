@@ -95,6 +95,14 @@
   (package-install 'nord-theme)
   (load-theme 'nord t)
 #+end_src
+** transparent
+#+begin_src emacs-lisp
+  (defun on-after-init ()
+    (unless (display-graphic-p (selected-frame))
+      (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+  (add-hook 'window-setup-hook 'on-after-init)
+#+end_src
 ** line number
 *** use display-line-numbers
 #+begin_src emacs-lisp
