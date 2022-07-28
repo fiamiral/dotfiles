@@ -1,4 +1,18 @@
 #+STARTUP: overview
+* initialize package.el
+** require
+#+begin_src emacs-lisp
+  (require 'package)
+#+end_src
+** add repository
+#+begin_src emacs-lisp
+  (add-to-list 'package-archives
+               '("melpa" . "https://melpa.org/packages/") t)
+#+end_src
+** initialize
+#+begin_src emacs-lisp
+  (package-initialize)
+#+end_src
 * Basic
 ** Tab
 *** using spaces
