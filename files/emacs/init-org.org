@@ -145,3 +145,10 @@ corfu-auto: auto completion
   (add-to-list 'completion-at-point-functions #'cape-keyword)
 #+end_src
 
+** fuzzy matching completion by fussy
+[[https://github.com/jojojames/fussy][fussy]]
+#+begin_src emacs-lisp
+  (package-install 'fussy)
+  (add-to-list 'completion-styles 'fussy t)
+#+end_src
+*** TODO use another backends for improve performance
