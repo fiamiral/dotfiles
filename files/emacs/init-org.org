@@ -93,6 +93,7 @@
 [[https://github.com/abo-abo/avy][avy]]
 #+begin_src emacs-lisp
   (package-install 'avy)
+  (setq-default avy-keys (number-sequence ?a ?z))
   (global-set-key (kbd "C-@") 'avy-goto-char-timer)
 #+end_src
 * Appearance
