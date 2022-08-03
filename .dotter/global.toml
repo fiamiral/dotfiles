@@ -8,6 +8,22 @@ depends = []
 
 [default.variables]
 
+[cli-common]
+depends = [
+    "zsh",
+    "git",
+    "micro",
+    "emacs",
+]
+
+[gui-common]
+depends = [
+    "alacritty",
+    "fcitx5",
+    "greetd",
+    "qutebrowser",
+]
+
 [zsh]
 depends = ["default"]
 
