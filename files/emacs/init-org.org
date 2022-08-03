@@ -70,6 +70,11 @@
   (setq inhibit-startup-screen t)
 #+end_src
 * keybind
+** command submenu by hydra
+[[https://github.com/abo-abo/hydra][hydra]]
+#+begin_src emacs-lisp
+  (package-install 'hydra)
+#+end_src
 ** quit by 'C-q'
 #+begin_src emacs-lisp
   (global-set-key "\C-q" 'save-buffers-kill-terminal)
@@ -153,3 +158,26 @@ corfu-auto: auto completion
   (add-to-list 'completion-styles 'fussy t)
 #+end_src
 *** TODO use another backends for improve performance
+** linter by flycheck
+[[https://www.flycheck.org][flycheck]]
+#+begin_src emacs-lisp
+  (package-install 'flycheck)
+  (require 'flycheck)
+  (global-flycheck-mode)
+#+end_src
+*** flycheck submenu by hydra
+#+begin_src emacs-lisp
+  (defhydra hydra-flycheck-menu (:color blue
+                                 :hint nil)
+    "
+  ^Show^             ^Move^
+  ^^^^^^^---------------------------
+  _l_: list errors   _n_ next error
+  ^ ^                _N_ previous error
+  "
+    ("l" flycheck-list-errors)
+    ("n" flycheck-next-error)
+    ("N" flycheck-previous-error))
+  (global-set-key (kbd "C-l") nil)
+  (define-key flycheck-mode-map (kbd "C-l") 'hydra-flycheck-menu/body)
+#+end_src
