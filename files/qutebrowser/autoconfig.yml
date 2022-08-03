@@ -27,7 +27,7 @@ settings:
         ZQ: null
         co: null
         d: null
-        f: null
+        f: set-cmd-text -sr :search
         gC: null
         gD: null
         gb: null
