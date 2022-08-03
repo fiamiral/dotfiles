@@ -191,7 +191,7 @@ alias cat='bat'
 {{/if}}
 
 # editor
-alias ed="${VISUAL}"
+alias edit="${VISUAL}"
 
 
 # --------------------------------

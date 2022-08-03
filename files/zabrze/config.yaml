@@ -1,4 +1,8 @@
 abbrevs:
+  # common
+  - name: edit
+    abbr: ed
+    snippet: edit
   # git
   - name: git
     abbr: g
