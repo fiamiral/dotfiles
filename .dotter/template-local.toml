@@ -1,0 +1,23 @@
+includes = []
+packages = [
+#    "default",
+#    "cli-common",
+#        "zsh",
+#        "git",
+#        "micro",
+#        "emacs",
+#    "gui-common",
+#        "alacritty",
+#        "fcitx5",
+#        "greetd",
+#        "qutebrowser",
+#    "qtile",
+#    "sway",
+#    "i3",
+#    "pacman",
+]
+
+[files]
+
+[variables]
+#fontsize = "11" # alacritty font size
