@@ -11,6 +11,9 @@ bindsym $mod+r reload
 # switch workspace
 bindsym $mod+s exec "${HOME}/.config/sway/scripts/switch-workspace"
 
+# send to workspace
+bindsym $mod+shift+s exec "${HOME}/.config/sway/scripts/send-to-workspace"
+
 # drag to move window
 floating_modifier $mod
 
