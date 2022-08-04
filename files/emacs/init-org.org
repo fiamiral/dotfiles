@@ -120,6 +120,10 @@
 #+begin_src emacs-lisp
   (global-display-line-numbers-mode t)
 #+end_src
+** hide menu bar
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+#+end_src
 * org-mode
 ** indent heading
 #+begin_src emacs-lisp
