@@ -92,6 +92,23 @@
 #+begin_src emacs-lisp
   (bind-key "C-f" 'isearch-forward-regexp)
 #+end_src
+** undo with undo-tree by 'C-z'
+#+begin_src emacs-lisp
+  (use-package undo-tree
+    :ensure t
+    :commands (undo-tree-visualize
+               undo-tree-visualizer-quit
+               undo-tree-visualizer-abort)
+    :bind (("C-z" . 'undo-tree-visualize)
+           :map undo-tree-visualizer-mode-map
+           ("q" . 'undo-tree-visualizer-abort)
+           ("RET" . 'undo-tree-visualizer-quit))
+    :custom
+    (undo-tree-visualizer-timestamps t)
+    (undo-tree-auto-save-history nil)
+    :config
+    (global-undo-tree-mode))
+#+end_src
 ** jump cursor by 'C-SPC'
 [[https://github.com/abo-abo/avy][avy]]
 #+begin_src emacs-lisp
