@@ -8,9 +8,9 @@
     (package-initialize)
     (package-install 'use-package)
     (require 'use-package))
+  (require 'bind-key)
 #+end_src
 * Basic
-** TODO use-package
 ** Tab
 *** using spaces
 #+begin_src emacs-lisp
@@ -67,11 +67,11 @@
   (setq inhibit-startup-screen t)
 #+end_src
 * keybind
-** TODO use-package
 ** command submenu by hydra
 [[https://github.com/abo-abo/hydra][hydra]]
 #+begin_src emacs-lisp
-  (package-install 'hydra)
+  (use-package hydra
+    :ensure t)
 #+end_src
 ** quit by 'C-q'
 #+begin_src emacs-lisp
@@ -95,16 +95,19 @@
 ** jump cursor by 'C-SPC'
 [[https://github.com/abo-abo/avy][avy]]
 #+begin_src emacs-lisp
-  (package-install 'avy)
-  (setq-default avy-keys (number-sequence ?a ?z))
-  (global-set-key (kbd "C-@") 'avy-goto-char-timer)
+  (use-package avy
+    :ensure t
+    :bind ("C-@" . avy-goto-char-timer) ; C-@ == C-SPC
+    :init
+    (setq avy-keys (number-sequence ?a ?z)))
 #+end_src
 * Appearance
-** TODO use-package
 ** nord theme
 #+begin_src emacs-lisp
-  (package-install 'nord-theme)
-  (load-theme 'nord t)
+  (use-package nord-theme
+    :ensure t
+    :init
+    (load-theme 'nord t))
 #+end_src
 ** transparent
 #+begin_src emacs-lisp
@@ -128,20 +131,23 @@
 #+begin_src emacs-lisp
   (setq org-startup-indented t)
 #+end_src
-** TODO use-package
 * IDE
-** TODO use-package
-** inline completionm by corfu
+** inline completion by corfu
 [[https://github.com/minad/corfu][corfu]]
-[[https://codeberg.org/akib/emacs-corfu-terminal][emacs-corfu-terminal]]: dependency for use corfu in CUI
-corfu-auto: auto completion
 #+begin_src emacs-lisp
-  (package-install 'corfu)
-  (package-install 'corfu-terminal)
-
-  (global-corfu-mode)
-  (corfu-terminal-mode)
-  (setq-default corfu-auto t)
+  (use-package corfu
+    :ensure t
+    :custom
+    (corfu-auto t) ; Enable auto completion
+    :init
+    (global-corfu-mode))
+#+end_src
+[[https://codeberg.org/akib/emacs-corfu-terminal][emacs-corfu-terminal]] : dependency for use corfu in CUI
+#+begin_src emacs-lisp
+  (use-package corfu-terminal
+    :ensure t
+    :init
+    (corfu-terminal-mode))
 #+end_src
 ** minibuffer completion by fido-vertical-mode
 #+begin_src emacs-lisp
@@ -150,39 +156,30 @@ corfu-auto: auto completion
 ** extend completion by cape
 [[https://github.com/minad/cape][cape]]
 #+begin_src emacs-lisp
-  (package-install 'cape)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (use-package cape
+    :ensure t
+    :init
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+    (add-to-list 'completion-at-point-functions #'cape-file)
+    (add-to-list 'completion-at-point-functions #'cape-keyword))
 #+end_src
 
 ** fuzzy matching completion by fussy
 [[https://github.com/jojojames/fussy][fussy]]
 #+begin_src emacs-lisp
-  (package-install 'fussy)
-  (add-to-list 'completion-styles 'fussy t)
+  (use-package fussy
+    :ensure t
+    :config
+    (add-to-list 'completion-styles 'fussy t))
 #+end_src
 *** TODO use another backends for improve performance
 ** linter by flycheck
 [[https://www.flycheck.org][flycheck]]
 #+begin_src emacs-lisp
-  (package-install 'flycheck)
-  (require 'flycheck)
-  (global-flycheck-mode)
+  (use-package flycheck
+    :ensure t
+    :init
+    (global-flycheck-mode))
 #+end_src
-*** flycheck submenu by hydra
-#+begin_src emacs-lisp
-  (defhydra hydra-flycheck-menu (:color blue
-                                 :hint nil)
-    "
-  ^Show^             ^Move^
-  ^^^^^^^---------------------------
-  _l_: list errors   _n_ next error
-  ^ ^                _N_ previous error
-  "
-    ("l" flycheck-list-errors)
-    ("n" flycheck-next-error)
-    ("N" flycheck-previous-error))
-  (global-set-key (kbd "C-l") nil)
-  (define-key flycheck-mode-map (kbd "C-l") 'hydra-flycheck-menu/body)
-#+end_src
+*** TODO define submenu by hydra
+* TODO use bind-key for define keybind
