@@ -91,3 +91,5 @@ fontsize = "13"
 
 [qutebrowser.files]
 "files/qutebrowser/autoconfig.yml" = "~/.config/qutebrowser/autoconfig.yml"
+"files/qutebrowser/config.py" = "~/.config/qutebrowser/config.py"
+"files/qutebrowser/nord-qutebrowser.py" = "~/.config/qutebrowser/nord-qutebrowser.py"
