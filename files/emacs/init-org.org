@@ -131,6 +131,10 @@
 #+begin_src emacs-lisp
   (setq org-startup-indented t)
 #+end_src
+** use shift-select
+#+begin_src emacs-lisp
+  (setq org-support-shift-select 'always)
+#+end_src
 * IDE
 ** inline completion by corfu
 [[https://github.com/minad/corfu][corfu]]
