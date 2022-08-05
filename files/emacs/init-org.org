@@ -75,22 +75,22 @@
 #+end_src
 ** quit by 'C-q'
 #+begin_src emacs-lisp
-  (global-set-key "\C-q" 'save-buffers-kill-terminal)
+  (bind-key "C-q" 'save-buffers-kill-terminal)
 #+end_src
 ** reload by 'C-r'
 #+begin_src emacs-lisp
   (defun reload-emacs ()
     (interactive)
     (load-file "~/.config/emacs/init.el"))
-  (global-set-key "\C-r" 'reload-emacs)
+  (bind-key "C-r" 'reload-emacs)
 #+end_src
 ** save by 'C-s'
 #+begin_src emacs-lisp
-  (global-set-key "\C-s" 'save-buffer)
+  (bind-key "C-s" 'save-buffer)
 #+end_src
 ** search by 'C-f'
 #+begin_src emacs-lisp
-  (global-set-key "\C-f" 'isearch-forward-regexp)
+  (bind-key "C-f" 'isearch-forward-regexp)
 #+end_src
 ** jump cursor by 'C-SPC'
 [[https://github.com/abo-abo/avy][avy]]
@@ -182,4 +182,3 @@
     (global-flycheck-mode))
 #+end_src
 *** TODO define submenu by hydra
-* TODO use bind-key for define keybind
