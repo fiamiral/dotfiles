@@ -1,19 +1,16 @@
 #+STARTUP: overview
-* initialize package.el
-** require
+* initialize use-package
 #+begin_src emacs-lisp
-  (require 'package)
-#+end_src
-** add repository
-#+begin_src emacs-lisp
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t)
-#+end_src
-** initialize
-#+begin_src emacs-lisp
-  (package-initialize)
+  (eval-when-compile
+    (require 'package)
+    (add-to-list 'package-archives
+                 '("melpa" . "https://melpa.org/packages/") t)
+    (package-initialize)
+    (package-install 'use-package)
+    (require 'use-package))
 #+end_src
 * Basic
+** TODO use-package
 ** Tab
 *** using spaces
 #+begin_src emacs-lisp
@@ -70,6 +67,7 @@
   (setq inhibit-startup-screen t)
 #+end_src
 * keybind
+** TODO use-package
 ** command submenu by hydra
 [[https://github.com/abo-abo/hydra][hydra]]
 #+begin_src emacs-lisp
@@ -102,6 +100,7 @@
   (global-set-key (kbd "C-@") 'avy-goto-char-timer)
 #+end_src
 * Appearance
+** TODO use-package
 ** nord theme
 #+begin_src emacs-lisp
   (package-install 'nord-theme)
@@ -129,7 +128,9 @@
 #+begin_src emacs-lisp
   (setq org-startup-indented t)
 #+end_src
+** TODO use-package
 * IDE
+** TODO use-package
 ** inline completionm by corfu
 [[https://github.com/minad/corfu][corfu]]
 [[https://codeberg.org/akib/emacs-corfu-terminal][emacs-corfu-terminal]]: dependency for use corfu in CUI
