@@ -37,6 +37,7 @@ depends = ["default"]
 "bin/chse" = "~/.local/bin/chse"
 "files/bat/config" = "~/.config/bat/config"
 "files/zabrze/config.yaml" = "~/.config/zabrze/config.yaml"
+"files/vivid/filetypes.yml" = "~/.config/vivid/filetypes.yml"
 
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
