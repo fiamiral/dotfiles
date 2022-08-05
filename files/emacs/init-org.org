@@ -186,3 +186,27 @@
     (global-flycheck-mode))
 #+end_src
 *** TODO define submenu by hydra
+** lsp-mode
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :ensure t
+    :hook (rust-mode . lsp)
+    :custom
+    (lsp-completion-provider :none))
+#+end_src
+#+begin_src emacs-lisp
+  (use-package lsp-ui
+    :ensure t)
+#+end_src
+** rust-mode
+#+begin_src emacs-lisp
+  (use-package rust-mode
+    :ensure t
+    :custom
+    (rust-format-on-save t))
+#+end_src
+#+begin_src emacs-lisp
+  (use-package cargo
+    :ensure t
+    :hook (rust-mode . cargo-minor-mode))
+#+end_src
