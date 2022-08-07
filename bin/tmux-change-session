@@ -1,0 +1,57 @@
+#!/bin/bash
+
+set -eux
+
+_repo_list() {
+    local full
+    ghq list --full-path | while read -r full; do
+        local name
+        name=$(echo "${full}" | rev | cut -d'/' -f-2 | rev)
+        echo -e "repo,${full},\e[32m${name}\e[0m"
+    done
+}
+
+_list() {
+    echo -e "custom:neofetch --off,${HOME},\e[36mmain\e[0m"
+    echo -e "dir,${HOME}/sandbox,\e[33msandbox\e[0m"
+    echo -e "repo,${HOME}/dotfiles,\e[34mdotfiles\e[0m"
+    echo -e "dir,${HOME}/documents,\e[34mdocuments\e[0m"
+    _repo_list
+}
+
+_select_preview() {
+    #shellcheck disable=SC2016
+    echo '
+    local type full name
+    type=$(echo {} | cut -d, -f1)
+    full=$(echo {} | cut -d, -f2)
+    name=$(echo {} | cut -d, -f3-)
+    case "${type}" in
+        "repo") onefetch --show-logo never -- "${full}" ;;
+        "dir") exa -lFT --level=2 --color=always --ignore-glob=".git" \
+                   --no-user --no-permissions --git --no-time ${full} ;;
+        custom*) eval "$(echo "${type}" | cut -d: -f2-)" ;;
+    esac
+    '
+}
+
+_select() {
+    fzf-tmux -p 90%,70% -- \
+             -d, --with-nth=3 --ansi \
+             --preview "$(_select_preview)"
+}
+
+_attach_session() {
+    local output full name
+    read -r output
+    full=$(echo "${output}" | cut -d, -f2)
+    name=$(echo "${output}" | cut -d, -f3-)
+    set +e
+    if ! tmux has-session -t "${name}" 2>/dev/null; then
+        tmux new-session -d -s "${name}" -c "${full}"
+    fi
+    set -e
+    tmux switch-client -t "${name}"
+}
+
+_list | _select | _attach_session
