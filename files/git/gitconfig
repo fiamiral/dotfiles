@@ -43,3 +43,5 @@
 [push]
     # Set default behavior for push cmd
     default = simple
+[ghq]
+    root = ~/projects
