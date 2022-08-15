@@ -72,7 +72,9 @@
 #+begin_src emacs-lisp
   (use-package hydra
     :ensure t)
+  (require 'hydra)
 #+end_src
+*** TODO do something about require
 ** quit by 'C-q'
 #+begin_src emacs-lisp
   (bind-key "C-q" 'save-buffers-kill-terminal)
@@ -117,6 +119,62 @@
     :bind ("C-@" . avy-goto-char-timer) ; C-@ == C-SPC
     :init
     (setq avy-keys (number-sequence ?a ?z)))
+#+end_src
+** window submenu by 'C-u'
+#+begin_src emacs-lisp
+  (require 'windmove)
+  (defhydra hydra-window-menu (:hint nil)
+    "
+     ↑   move by arrow key     [_v_]: split vertical   [_k_]: kill window
+   ←   →                       [_h_]: split horizontal [_K_]: kill other window
+     ↓   resize by with shift  [_q_]: quit
+  "
+    ("<up>" windmove-up)
+    ("<down>" windmove-down)
+    ("<left>" windmove-left)
+    ("<right>" windmove-right)
+    ("S-<up>" hydra-resize-up)
+    ("S-<down>" hydra-resize-down)
+    ("S-<left>" hydra-resize-left)
+    ("S-<right>" hydra-resize-right)
+
+    ("v" split-window-vertically :exit t)
+    ("h" split-window-horizontally :exit t)
+    ("k" delete-window :exit t)
+    ("K" delete-other-windows :exit t)
+    ("q" nil :exit t))
+  (bind-key "C-u" 'hydra-window-menu/body)
+#+end_src
+*** resizing functions
+#+begin_src emacs-lisp
+  (defun hydra-resize-up (arg)
+    "Resizing window to up"
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (enlarge-window arg)
+      (shrink-window arg)))
+  (defun hydra-resize-down (arg)
+    "Resizing window to down"
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'up))
+        (shrink-window arg)
+      (enlarge-window arg)))
+  (defun hydra-resize-left (arg)
+    "Resizing window to left"
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (shrink-window-horizontally arg)
+      (enlarge-window-horizontally arg)))
+  (defun hydra-resize-right (arg)
+    "Resizing window to right"
+    (interactive "p")
+    (if (let ((windmove-wrap-around))
+          (windmove-find-other-window 'right))
+        (enlarge-window-horizontally arg)
+      (shrink-window-horizontally arg)))
 #+end_src
 * Appearance
 ** nord theme
