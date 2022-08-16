@@ -217,7 +217,8 @@
   (use-package corfu
     :ensure t
     :init
-    (global-corfu-mode))
+    (global-corfu-mode)
+    (setq tab-always-indent 'complete))
 #+end_src
 [[https://codeberg.org/akib/emacs-corfu-terminal][emacs-corfu-terminal]] : dependency for use corfu in CUI
 #+begin_src emacs-lisp
