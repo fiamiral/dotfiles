@@ -272,12 +272,12 @@
   (use-package lsp-ui
     :ensure t)
 #+end_src
-** rust-mode
+** rustic
 #+begin_src emacs-lisp
-  (use-package rust-mode
+  (use-package rustic
     :ensure t
     :custom
-    (rust-format-on-save t))
+    (rustic-format-trigger 'on-save))
 #+end_src
 #+begin_src emacs-lisp
   (use-package cargo
