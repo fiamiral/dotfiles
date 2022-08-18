@@ -71,7 +71,8 @@
 [[https://github.com/abo-abo/hydra][hydra]]
 #+begin_src emacs-lisp
   (use-package hydra
-    :ensure t)
+    :ensure t
+    :defer t)
   (require 'hydra)
 #+end_src
 *** TODO do something about require
@@ -98,6 +99,7 @@
 #+begin_src emacs-lisp
   (use-package undo-tree
     :ensure t
+    :defer t
     :commands (undo-tree-visualize
                undo-tree-visualizer-quit
                undo-tree-visualizer-abort)
@@ -116,6 +118,7 @@
 #+begin_src emacs-lisp
   (use-package avy
     :ensure t
+    :defer t
     :bind ("C-@" . avy-goto-char-timer) ; C-@ == C-SPC
     :init
     (setq avy-keys (number-sequence ?a ?z)))
@@ -181,6 +184,7 @@
 #+begin_src emacs-lisp
   (use-package nord-theme
     :ensure t
+    :defer t
     :init
     (load-theme 'nord t))
 #+end_src
@@ -216,6 +220,7 @@
 #+begin_src emacs-lisp
   (use-package corfu
     :ensure t
+    :defer t
     :init
     (global-corfu-mode)
     (setq tab-always-indent 'complete))
@@ -224,6 +229,7 @@
 #+begin_src emacs-lisp
   (use-package corfu-terminal
     :ensure t
+    :defer t
     :init
     (corfu-terminal-mode))
 #+end_src
@@ -236,6 +242,7 @@
 #+begin_src emacs-lisp
   (use-package cape
     :ensure t
+    :defer t
     :init
     (add-to-list 'completion-at-point-functions #'cape-dabbrev)
     (add-to-list 'completion-at-point-functions #'cape-file)
@@ -247,6 +254,7 @@
 #+begin_src emacs-lisp
   (use-package fussy
     :ensure t
+    :defer t
     :config
     (add-to-list 'completion-styles 'fussy t))
 #+end_src
@@ -256,6 +264,7 @@
 #+begin_src emacs-lisp
   (use-package flycheck
     :ensure t
+    :defer t
     :init
     (global-flycheck-mode))
 #+end_src
@@ -264,6 +273,7 @@
 #+begin_src emacs-lisp
   (use-package lsp-mode
     :ensure t
+    :defer t
     :hook (rust-mode . lsp)
     :custom
     (lsp-completion-provider :none))
@@ -276,11 +286,13 @@
 #+begin_src emacs-lisp
   (use-package rustic
     :ensure t
+    :defer t
     :custom
     (rustic-format-trigger 'on-save))
 #+end_src
 #+begin_src emacs-lisp
   (use-package cargo
     :ensure t
+    :defer t
     :hook (rust-mode . cargo-minor-mode))
 #+end_src
