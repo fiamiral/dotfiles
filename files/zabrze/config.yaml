@@ -3,6 +3,16 @@ abbrevs:
   - name: edit
     abbr: ed
     snippet: edit
+  # cd
+  - name: cd up
+    abbr: ..
+    snippet: cd ..
+  - name: cd up2
+    abbr: ..2
+    snippet: cd ../..
+  - name: cd up3
+    abbr: ..3
+    snippet: cd ../../..
   # git
   - name: git
     abbr: g
