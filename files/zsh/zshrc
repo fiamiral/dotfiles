@@ -23,6 +23,8 @@ bindkey '^[[4~' end-of-line # End (Arch)
 bindkey "^[[1;5C" forward-word # C-Left
 bindkey "^[[1;5D" backward-word # C-Right
 
+bindkey "^[[3~" delete-char # delete
+
 # Zsh Shift Select Mode (https://github.com/jirutka/zsh-shift-select)
 # Emacs shift-select mode for Zsh
 zi light jirutka/zsh-shift-select
