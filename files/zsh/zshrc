@@ -177,7 +177,7 @@ eval "$(zabrze init --bind-keys)"
 # ls
 {{#if (is_executable "exa")}}
 alias ll='exa -alF --time-style=long-iso --git'
-alias lt='exa -alFT --no-permissions --no-filesize --no-user --no-time --git --level=3 --ignore-glob=".git"'
+alias lt='exa -alFT --no-permissions --no-filesize --no-user --no-time --git --level=2 --ignore-glob=".git"'
 {{else}}
 alias ll='ls -hlAFG --time-style=long-iso --color=always'
 {{/if}}
