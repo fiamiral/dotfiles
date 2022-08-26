@@ -39,6 +39,13 @@
   (mouse-wheel-mode t)
 #+end_src
 
+** scroll
+set scroll step and margin
+#+begin_src emacs-lisp
+  (setq scroll-conservatively 1)
+  (setq scroll-margin 5)
+  (setq scroll-preserve-screen-position t)
+#+end_src
 ** backups
 *** number of backup stored
 #+begin_src emacs-lisp
