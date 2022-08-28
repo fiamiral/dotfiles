@@ -222,6 +222,16 @@ set scroll step and margin
   (setq org-support-shift-select 'always)
 #+end_src
 * IDE
+** folding by origami
+#+begin_src emacs-lisp
+  (use-package origami
+    :ensure t
+    :defer t
+    :bind (("M-SPC" . origami-recursively-toggle-node))
+    :config
+    (add-to-list 'origami-parser-alist '(rustic-mode . origami-c-style-parser))
+    (global-origami-mode))
+#+end_src
 ** inline completion by corfu
 [[https://github.com/minad/corfu][corfu]]
 #+begin_src emacs-lisp
