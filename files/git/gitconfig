@@ -30,7 +30,7 @@
 
 [diff]
     # Use difftastic as a diff tool
-    external = difft
+    external = "difft --width $COLUMNS"
 
 [init]
     # Set default branch name
