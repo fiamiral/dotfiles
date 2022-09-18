@@ -78,6 +78,7 @@ fontsize = "13"
 "files/waybar/config" = "~/.config/waybar/config"
 "files/waybar/style.css" = "~/.config/waybar/style.css"
 "files/wofi/style.css" = "~/.config/wofi/style.css"
+"bin/random-wallpaper" = "~/.local/bin/random-wallpaper"
 
 [emacs.files]
 "files/emacs/init.el" = "~/.config/emacs/init.el"
