@@ -13,6 +13,7 @@ _repo_list() {
 
 _list() {
     echo -e "custom:neofetch --off,${HOME},\e[36mmain\e[0m"
+    echo -e "diary,${HOME}/documents/diary,\e[36mdiary\e[0m"
     echo -e "dir,${HOME}/sandbox,\e[33msandbox\e[0m"
     echo -e "repo,${HOME}/dotfiles,\e[34mdotfiles\e[0m"
     echo -e "dir,${HOME}/documents,\e[34mdocuments\e[0m"
