@@ -2,5 +2,5 @@
 
 while true; do
     swaymsg output '*' bg "$(find ~/.local/wallpapers/ -name '*.jpg' | shuf -n 1)" fill
-    sleep 300
+    sleep 600
 done
