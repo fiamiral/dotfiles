@@ -2,6 +2,8 @@
 
 files=$(unbuffer git status -s \
         | fzf --ansi --multi \
+            --preview='tmp={};git difftool -y --extcmd="difft --color=always --display=inline" HEAD -- ${tmp:3}' \
+            --preview-window='75%' \
         | awk '{print $2}' \
         | tr '\n' ' ')
 
