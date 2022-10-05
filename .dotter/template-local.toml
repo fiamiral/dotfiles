@@ -6,6 +6,7 @@ packages = [
 #        "git",
 #        "micro",
 #        "emacs",
+#        "vim",
 #    "gui-common",
 #        "alacritty",
 #        "fcitx5",
