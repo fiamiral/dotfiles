@@ -6,6 +6,7 @@ vim.wo.number = true
 vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
 vim.bo.expandtab = true
+vim.g.mapleader = " "
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -139,3 +140,12 @@ require("lualine").setup({
     inactive_winbar = {},
     extensions = {},
 })
+
+require("which-key").register({
+    l = {
+        name = "lsp",
+        v = { "<cmd>Lspsaga code_action<CR>", "code action" },
+        r = { "<cmd>Lspsaga rename<CR>", "rename" },
+        d = { "<cmd>Lspsaga show_line_diagnostics<CR>", "line diagnostics" },
+    },
+}, { prefix = "<leader>" })

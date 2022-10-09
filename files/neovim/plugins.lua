@@ -25,6 +25,13 @@ return require("packer").startup(function(use)
     -- LSP
     use({ "williamboman/mason.nvim", "neovim/nvim-lspconfig", "williamboman/mason-lspconfig.nvim" })
     use("j-hui/fidget.nvim")
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            require("lspsaga").init_lsp_saga()
+        end,
+    })
     -- debug
     use({ "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" })
     -- completion
@@ -44,6 +51,13 @@ return require("packer").startup(function(use)
     use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    })
+    -- keybind
+    use({
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup()
+        end,
     })
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
