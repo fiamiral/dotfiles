@@ -36,9 +36,14 @@ return require("packer").startup(function(use)
         "saadparwaiz1/cmp_luasnip",
     })
     -- rust
-    use({"simrat39/rust-tools.nvim", 'rust-lang/rust.vim'})
+    use({ "simrat39/rust-tools.nvim", "rust-lang/rust.vim" })
     -- snippet
     use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
+    -- status line
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    })
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
