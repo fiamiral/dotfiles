@@ -35,6 +35,8 @@ require("lspconfig").sumneko_lua.setup({
     },
 })
 
+require("fidget").setup()
+
 require("rust-tools").setup({
     tools = {
         runnables = {

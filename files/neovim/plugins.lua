@@ -24,6 +24,7 @@ return require("packer").startup(function(use)
     use("arcticicestudio/nord-vim")
     -- LSP
     use({ "williamboman/mason.nvim", "neovim/nvim-lspconfig", "williamboman/mason-lspconfig.nvim" })
+    use("j-hui/fidget.nvim")
     -- debug
     use({ "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" })
     -- completion
