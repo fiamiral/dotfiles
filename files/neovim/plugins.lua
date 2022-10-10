@@ -32,6 +32,7 @@ return require("packer").startup(function(use)
             require("lspsaga").init_lsp_saga()
         end,
     })
+    use("jose-elias-alvarez/null-ls.nvim")
     -- debug
     use({ "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" })
     -- completion
