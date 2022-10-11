@@ -22,6 +22,8 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     -- Nord colorscheme
     use("arcticicestudio/nord-vim")
+    -- Transparent
+    use("xiyaowong/nvim-transparent")
     -- treesitter
     use({
         "nvim-treesitter/nvim-treesitter",

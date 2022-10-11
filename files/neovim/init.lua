@@ -2,11 +2,21 @@ require("plugins")
 
 vim.cmd.colorscheme("nord")
 
+require("transparent").setup({
+    enable = true, -- boolean: enable transparent
+    extra_groups = { -- table/string: additional groups that should be cleared
+        -- In particular, when you set it to 'all', that means all available groups
+        "all",
+    },
+    exclude = {}, -- table: groups you don't want to clear
+})
+
 vim.wo.number = true
 vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
 vim.bo.expandtab = true
 vim.g.mapleader = " "
+vim.go.termguicolors = true
 
 require("mason").setup()
 require("mason-lspconfig").setup({
