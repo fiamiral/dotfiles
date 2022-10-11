@@ -22,6 +22,13 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     -- Nord colorscheme
     use("arcticicestudio/nord-vim")
+    -- treesitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+    })
     -- LSP
     use({ "williamboman/mason.nvim", "neovim/nvim-lspconfig", "williamboman/mason-lspconfig.nvim" })
     use("j-hui/fidget.nvim")

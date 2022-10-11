@@ -13,6 +13,14 @@ require("mason-lspconfig").setup({
     ensure_installed = { "sumneko_lua", "stylua", "rust_analyzer" },
 })
 
+require("nvim-treesitter.configs").setup({
+    ensure_installed = { "rust", "lua" },
+    highlight = {
+        enable = true,
+        disable = {},
+    },
+})
+
 require("lspconfig").sumneko_lua.setup({
     settings = {
         Lua = {
