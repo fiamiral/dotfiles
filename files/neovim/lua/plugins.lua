@@ -62,6 +62,8 @@ return require("packer").startup(function(use)
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
+    -- sidebar
+    use("sidebar-nvim/sidebar.nvim")
     -- keybind
     use({
         "folke/which-key.nvim",
