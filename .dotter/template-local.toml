@@ -4,9 +4,7 @@ packages = [
 #    "cli-common",
 #        "zsh",
 #        "git",
-#        "micro",
-#        "emacs",
-#        "vim",
+#        "neovim",
 #    "gui-common",
 #        "alacritty",
 #        "fcitx5",
@@ -16,6 +14,8 @@ packages = [
 #    "sway",
 #    "i3",
 #    "pacman",
+#    "emacs",
+#    "micro",
 ]
 
 [files]

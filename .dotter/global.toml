@@ -12,8 +12,7 @@ depends = []
 depends = [
     "zsh",
     "git",
-    "micro",
-    "emacs",
+    "neovim"
 ]
 
 [gui-common]
