@@ -64,6 +64,8 @@ return require("packer").startup(function(use)
     })
     -- sidebar
     use("sidebar-nvim/sidebar.nvim")
+    -- scrollbar
+    use("petertriho/nvim-scrollbar")
     -- keybind
     use({
         "folke/which-key.nvim",

@@ -121,3 +121,5 @@ require("sidebar-nvim").setup({
 require("which-key").register({
     b = { '<cmd>lua require("sidebar-nvim").toggle()<CR>', "toggle sidebar" },
 }, { prefix = "<leader>" })
+
+require("scrollbar").setup()
