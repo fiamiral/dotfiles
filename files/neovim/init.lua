@@ -19,7 +19,7 @@ vim.g.mapleader = " "
 vim.go.termguicolors = true
 
 require("lsp")
-require("fidget").setup()
+
 local cmp = require("cmp")
 
 if not cmp then
