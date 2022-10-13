@@ -18,67 +18,8 @@ vim.bo.expandtab = true
 vim.g.mapleader = " "
 vim.go.termguicolors = true
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "stylua", "rust_analyzer" },
-})
-
-require("nvim-treesitter.configs").setup({
-    ensure_installed = { "rust", "lua" },
-    highlight = {
-        enable = true,
-        disable = {},
-    },
-})
-
-require("lspconfig").sumneko_lua.setup({
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = "LuaJIT",
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-})
-
+require("lsp")
 require("fidget").setup()
-
-require("rust-tools").setup({
-    tools = {
-        runnables = {
-            use_telescope = true,
-        },
-        inlay_hints = {
-            auto = true,
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-    server = {
-        settings = {
-            ["rust-analyzer"] = {
-                checkOnSave = {
-                    command = "clippy",
-                },
-            },
-        },
-    },
-})
-
 local cmp = require("cmp")
 
 if not cmp then
@@ -116,8 +57,6 @@ cmp.setup({
         { name = "buffer" },
     }),
 })
-vim.g.rustfmt_autosave = 1
-
 require("lualine").setup({
     options = {
         icons_enabled = true,
@@ -158,35 +97,3 @@ require("lualine").setup({
     inactive_winbar = {},
     extensions = {},
 })
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.formatting.stylua.with({
-            extra_args = { "--indent-type", "Spaces" },
-        }),
-    },
-    on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
-            })
-        end
-    end,
-})
-
-require("which-key").register({
-    l = {
-        name = "lsp",
-        v = { "<cmd>Lspsaga code_action<CR>", "code action" },
-        r = { "<cmd>Lspsaga rename<CR>", "rename" },
-        d = { "<cmd>Lspsaga show_line_diagnostics<CR>", "line diagnostics" },
-        f = { "<cmd>lua vim.lsp.buf.format()<CR>", "format" },
-    },
-}, { prefix = "<leader>" })

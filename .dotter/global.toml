@@ -99,3 +99,6 @@ fontsize = "13"
 [neovim.files]
 "files/neovim/init.lua" = "~/.config/nvim/init.lua"
 "files/neovim/plugins.lua" = "~/.config/nvim/lua/plugins.lua"
+"files/neovim/utils/setup_lsp.lua" = "~/.config/nvim/lua/utils/setup_lsp.lua"
+"files/neovim/lsp.lua" = "~/.config/nvim/lua/lsp.lua"
+"files/neovim/langs" = "~/.config/nvim/lua/langs"
