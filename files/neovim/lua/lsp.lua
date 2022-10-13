@@ -12,6 +12,9 @@ require("mason-lspconfig").setup({
 -- treesitter
 require("nvim-treesitter.configs").setup({
     ensure_installed = config.treesitter_install,
+    highlight = {
+        enable = true,
+    },
 })
 
 -- fidget
