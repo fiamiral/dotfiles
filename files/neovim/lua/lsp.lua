@@ -1,5 +1,6 @@
 require("langs.lua")
 require("langs.rust")
+require("langs.shell")
 
 local config = require("utils.setup_lsp")
 
