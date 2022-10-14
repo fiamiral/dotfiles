@@ -21,7 +21,7 @@ local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     -- Nord colorscheme
-    use("arcticicestudio/nord-vim")
+    use("shaunsingh/nord.nvim")
     -- Transparent
     use("xiyaowong/nvim-transparent")
     -- treesitter
