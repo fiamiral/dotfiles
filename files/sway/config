@@ -50,7 +50,6 @@ gaps inner 5
 font pango:Cica 13
 
 # wallpaper
-output "*" background ~/sandbox/wallpaper.jpg fill
 exec random-wallpaper
 
 # cursor theme
