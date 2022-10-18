@@ -286,6 +286,7 @@ office:
     - .ps
     - .rtf
     - .sxw
+    - .mia
 
   spreadsheet:
     - .xls
