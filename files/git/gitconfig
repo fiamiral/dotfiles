@@ -45,3 +45,5 @@
     default = simple
 [ghq]
     root = ~/projects
+[credential]
+	helper = cache
