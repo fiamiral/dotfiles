@@ -101,3 +101,7 @@ fontsize = "13"
 
 [bitwarden.files]
 "bin/fbw" = "~/.local/bin/fbw"
+
+[leftwm.files]
+"files/leftwm/config.ron" = "~/.config/leftwm/config.ron"
+"files/leftwm/theme" = "~/.config/leftwm/themes/current"

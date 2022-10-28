@@ -13,6 +13,7 @@ packages = [
 #    "qtile",
 #    "sway",
 #    "i3",
+#    "leftwm",
 #    "pacman",
 #    "emacs",
 #    "micro",
