@@ -19,3 +19,7 @@ picom --config "${SCRIPTPATH}/picom.conf" &
 
 # wallpaper
 feh --no-fehbg --randomize --bg-fill ~/.local/wallpapers/*
+
+# eww
+sleep 1
+eww open bar

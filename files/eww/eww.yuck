@@ -1,0 +1,46 @@
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "0px"
+                               :y "0px"
+                               :width "100%"
+                               :height "30px"
+                               :anchor "top center")
+           :stacking "fg"
+           :reserve (struts :distance "30px" :side "top")
+  (box :class "bar"
+    (leftwm)
+    (rightside)))
+
+(defwidget rightside []
+  (box :class "rightside"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (thermal)
+    (battery)
+    (box time)))
+
+(defwidget thermal []
+  (box :class "box"
+    "${round(EWW_TEMPS.ACPITZ_TEMP1, 0)}°C"))
+
+(defwidget battery []
+  (box :class "${EWW_BATTERY.BAT0.capacity <= 15 ? "very_low" :
+                 EWW_BATTERY.BAT0.capacity <= 40 ? "low" :
+                 EWW_BATTERY.BAT0.capacity <= 70 ? "middle" :
+                                                   "high"}"
+    "${EWW_BATTERY.BAT0.capacity}%"))
+
+(defpoll time :interval "1s"
+  `date +%H:%M:%S`)
+
+(defwidget leftwm []
+  (box
+    (for tag in "${leftwm-state.workspaces[0].tags}"
+      (button
+        :onclick "leftwm-command 'SendWorkspaceToTag 0 ${tag.index}'"
+        "${tag.name}"))))
+
+(deflisten leftwm-state
+           :initial '{"workspaces":[{"layout":"","tags":[]}]}'
+  `leftwm-state`)

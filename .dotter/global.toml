@@ -105,3 +105,6 @@ fontsize = "13"
 [leftwm.files]
 "files/leftwm/config.ron" = "~/.config/leftwm/config.ron"
 "files/leftwm/theme" = "~/.config/leftwm/themes/current"
+
+[eww.files]
+"files/eww/" = "~/.config/eww/"
