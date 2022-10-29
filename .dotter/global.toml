@@ -106,6 +106,8 @@ fontsize = "13"
 [leftwm.files]
 "files/leftwm/config.ron" = "~/.config/leftwm/config.ron"
 "files/leftwm/theme" = "~/.config/leftwm/themes/current"
+"files/leftwm/leftwm-start.sh" = { target = "/usr/local/bin/leftwm-start.sh", type = "template", owner = "root" }
+"files/leftwm/leftwm.desktop" = { target = "/usr/share/xsessions/leftwm-script.desktop", type = "template", owner = "root" }
 
 [eww.files]
 "files/eww/" = "~/.config/eww/"
