@@ -101,6 +101,7 @@ fontsize = "13"
 
 [bitwarden.files]
 "bin/fbw" = "~/.local/bin/fbw"
+"bin/git-credential-rbw" = "~/.local/bin/git-credential-rbw"
 
 [leftwm.files]
 "files/leftwm/config.ron" = "~/.config/leftwm/config.ron"

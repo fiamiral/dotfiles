@@ -46,4 +46,4 @@
 [ghq]
     root = ~/projects
 [credential]
-	helper = cache
+	helper = rbw
