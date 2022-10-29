@@ -59,6 +59,7 @@ fontsize = "13"
 [fcitx5.files]
 "files/fcitx5/config" = "~/.config/fcitx5/config"
 "files/fcitx5/profile" = { target = "~/.config/fcitx5/profile", type = "template" }
+"files/fcitx5/fcitx5.desktop" = "~/.config/autostart/fcitx5.desktop"
 
 [i3.files]
 "files/i3/config" = "~/.config/i3/config"
