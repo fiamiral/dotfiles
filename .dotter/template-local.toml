@@ -1,24 +1,37 @@
 includes = []
 packages = [
-#    "default",
-#    "cli-common",
-#        "zsh",
+    "common",
+    "cui-common",
 #        "git",
 #        "neovim",
-#    "gui-common",
+#        "zsh",
+    "gui-common",
 #        "alacritty",
-#        "fcitx5",
-#        "greetd",
 #        "qutebrowser",
-#    "qtile",
-#    "sway",
-#    "i3",
-#    "leftwm",
-#    "eww",
-#    "pacman",
-#    "emacs",
-#    "micro",
+    # window managers
+    "i3",
+    "leftwm",
+    "sway",
+    # other
+    "emacs",
+    "micro",
+    "paru",
+    "qtile",
+
+    # deps
+#    "bat",
 #    "bitwarden",
+#    "eww",
+#    "fcitx5",
+#    "fzf",
+#    "greetd",
+#    "rofi",
+#    "starship",
+#    "tmux",
+#    "vivid",
+#    "waybar",
+#    "wofi",
+#    "zabrze",
 ]
 
 [files]

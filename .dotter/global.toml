@@ -1,113 +1,152 @@
 [helpers]
 
-[default]
-depends = []
-
-[default.files]
+[common.files]
 "files/common.env" = "~/.config/common.env"
 
-[default.variables]
-
-[cli-common]
+[cui-common]
 depends = [
-    "zsh",
     "git",
-    "neovim"
+    "neovim",
+    "zsh",
 ]
 
 [gui-common]
 depends = [
     "alacritty",
-    "fcitx5",
-    "greetd",
     "qutebrowser",
 ]
 
-[zsh]
-depends = ["default"]
-
-[zsh.files]
-"files/zsh/home.zshenv" = "~/.zshenv"
-"files/zsh/zshenv" = "~/.config/zsh/.zshenv"
-"files/zsh/zshrc" = "~/.config/zsh/.zshrc"
-"files/zsh/scripts/fzf-select-files" = "~/.config/zsh/scripts/fzf-select-files"
-"files/starship/starship.toml" = "~/.config/starship.toml"
-"files/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
-"bin/tmux-change-session" = "~/.local/bin/tmux-change-session"
-"files/bat/config" = "~/.config/bat/config"
-"files/zabrze/config.yaml" = "~/.config/zabrze/config.yaml"
-"files/vivid/filetypes.yml" = "~/.config/vivid/filetypes.yml"
-
-[git.files]
-"files/git/gitconfig" = "~/.config/git/config"
-"files/git/script" = "~/.config/git/script"
-
-[qtile.files]
-"files/qtile/config.py" = "~/.config/qtile/config.py"
-"bin/qtile-switch-group" = "~/.local/bin/qtile-switch-group"
-
+[alacritty]
+variables = { fontsize = "13" }
 [alacritty.files]
 "files/alacritty/alacritty.yml" = "~/.config/alacritty/alacritty.yml"
-"bin/fzf-float" = "~/.local/bin/fzf-float"
-[alacritty.variables]
-fontsize = "13"
 
-[micro.files]
-"files/micro/settings.json" = "~/.config/micro/settings.json"
+[bat.files]
+"files/bat/config" = "~/.config/bat/config"
+
+[bitwarden.files]
+"bin/fbw" = "~/.local/bin/fbw"
+"bin/git-credential-rbw" = "~/.local/bin/git-credential-rbw"
+
+[emacs.files]
+"files/emacs/init.el" = "~/.config/emacs/init.el"
+"files/emacs/init-org.org" = "~/.config/emacs/init-org.org"
+
+[eww.files]
+"files/eww/eww.yuck" = "~/.config/eww/eww.yuck"
+"files/eww/eww.scss" = "~/.config/eww/eww.scss"
 
 [fcitx5.files]
 "files/fcitx5/config" = "~/.config/fcitx5/config"
 "files/fcitx5/profile" = { target = "~/.config/fcitx5/profile", type = "template" }
 "files/fcitx5/fcitx5.desktop" = "~/.config/autostart/fcitx5.desktop"
 
-[i3.files]
-"files/i3/config" = "~/.config/i3/config"
-"files/i3/i3.desktop" = { target = "/usr/share/xsessions/i3-script.desktop", type = "template", owner = "root"}
-"files/i3/xinitrc" = { target = "/etc/X11/xinit/xinitrc-script", type = "template", owner = "root"}
-"files/rofi/nord.rasi" = "~/.config/rofi/themes/nord.rasi"
-"files/rofi/config.rasi" = "~/.config/rofi/config.rasi"
+[fzf.files]
+"bin/fzf-float" = "~/.local/bin/fzf-float"
 
-[sway.files]
-"files/sway/sway-start.sh" = { target = "/usr/local/bin/sway-start.sh", type = "template", owner = "root" }
-"files/sway/sway.desktop" = { target = "/usr/share/wayland-sessions/sway-script.desktop", type = "template", owner = "root" }
-"files/sway/config" = "~/.config/sway/config"
-"files/sway/scripts/get-simpletree" = "~/.config/sway/scripts/get-simpletree"
-"files/sway/scripts/switch-workspace" = "~/.config/sway/scripts/switch-workspace"
-"files/sway/scripts/send-to-workspace" = "~/.config/sway/scripts/send-to-workspace"
-"files/waybar/config" = "~/.config/waybar/config"
-"files/waybar/style.css" = "~/.config/waybar/style.css"
-"files/wofi/style.css" = "~/.config/wofi/style.css"
-"bin/random-wallpaper" = "~/.local/bin/random-wallpaper"
-
-[emacs.files]
-"files/emacs/init.el" = "~/.config/emacs/init.el"
-"files/emacs/init-org.org" = "~/.config/emacs/init-org.org"
-
-[pacman.files]
-"files/paru/paru.conf" = "~/.config/paru/paru.conf"
+[git]
+depends = [
+    "bitwarden",
+]
+[git.files]
+"files/git/gitconfig" = "~/.config/git/config"
+"files/git/script" = "~/.config/git/script"
 
 [greetd.files]
-"files/greetd/config.toml" = { target = "/etc/greetd/config.toml", type= "template", owner = "root" }
+"files/greetd/config.toml" = { target = "/etc/greetd/config.toml", type = "template", owner = "root" }
 
-[qutebrowser.files]
-"files/qutebrowser/autoconfig.yml" = "~/.config/qutebrowser/autoconfig.yml"
-"files/qutebrowser/config.py" = "~/.config/qutebrowser/config.py"
-"files/qutebrowser/nord-qutebrowser.py" = "~/.config/qutebrowser/nord-qutebrowser.py"
-"files/qutebrowser/greasemonkey/youtube-adblock.user.js" = "~/.local/share/qutebrowser/greasemonkey/youtube-adblock.user.js"
+[i3]
+depends = [
+    "fcitx5",
+    "rofi",
+]
+[i3.files]
+"files/i3/config" = "~/.config/i3/config"
+"files/i3/i3.desktop" = { target = "/usr/share/xsessions/i3-script.desktop", type = "template", owner = "root" }
+"files/i3/xinitrc" = { target = "/etc/X11/xinit/xinitrc-script", type = "template", owner = "root" }
 
-[neovim.files]
-"files/neovim/init.lua" = "~/.config/nvim/init.lua"
-"files/neovim/lua" = "~/.config/nvim/lua"
-
-[bitwarden.files]
-"bin/fbw" = "~/.local/bin/fbw"
-"bin/git-credential-rbw" = "~/.local/bin/git-credential-rbw"
-
+[leftwm]
+depends = [
+    "eww",
+    "fcitx5",
+    "greetd",
+    "rofi",
+]
 [leftwm.files]
 "files/leftwm/config.ron" = "~/.config/leftwm/config.ron"
 "files/leftwm/theme" = "~/.config/leftwm/themes/current"
 "files/leftwm/leftwm-start.sh" = { target = "/usr/local/bin/leftwm-start.sh", type = "template", owner = "root" }
 "files/leftwm/leftwm.desktop" = { target = "/usr/share/xsessions/leftwm-script.desktop", type = "template", owner = "root" }
 
-[eww.files]
-"files/eww/" = "~/.config/eww/"
+[micro.files]
+"files/micro/settings.json" = "~/.config/micro/settings.json"
+
+[neovim.files]
+"files/neovim/init.lua" = "~/.config/nvim/init.lua"
+"files/neovim/lua" = "~/.config/nvim/lua"
+
+[paru.files]
+"files/paru/paru.conf" = "~/.config/paru/paru.conf"
+
+[qtile.files]
+"files/qtile/config.py" = "~/.config/qtile/config.py"
+"bin/qtile-switch-group" = "~/.local/bin/qtile-switch-group"
+
+[qutebrowser.files]
+"files/qutebrowser/autoconfig.yml" = "~/.config/qutebrowser/autoconfig.yml"
+"files/qutebrowser/config.py" = "~/.config/qutebrowser/config.py"
+"files/qutebrowser/nord-qutebrowser.py" = "~/.config/qutebrowser/nord-qutebrowser.py"
+"files/qutebrowser/greasemonkey" = "~/.local/share/qutebrowser/greasemonkey"
+
+[rofi.files]
+"files/rofi/nord.rasi" = "~/.config/rofi/themes/nord.rasi"
+"files/rofi/config.rasi" = "~/.config/rofi/config.rasi"
+
+[starship.files]
+"files/starship/starship.toml" = "~/.config/starship.toml"
+
+[sway]
+depends = [
+    "greetd",
+    "waybar",
+    "wofi",
+]
+[sway.files]
+"files/sway/sway-start.sh" = { target = "/usr/local/bin/sway-start.sh", type = "template", owner = "root" }
+"files/sway/sway.desktop" = { target = "/usr/share/wayland-sessions/sway-script.desktop", type = "template", owner = "root" }
+"files/sway/config" = "~/.config/sway/config"
+"files/sway/scripts" = "~/.config/sway/scripts"
+"bin/random-wallpaper" = "~/.local/bin/random-wallpaper"
+
+[tmux.files]
+"files/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
+"bin/tmux-change-session" = "~/.local/bin/tmux-change-session"
+
+[vivid.files]
+"files/vivid/filetypes.yml" = "~/.config/vivid/filetypes.yml"
+
+[waybar.files]
+"files/waybar/config" = "~/.config/waybar/config"
+"files/waybar/style.css" = "~/.config/waybar/style.css"
+
+[wofi.files]
+"files/wofi/style.css" = "~/.config/wofi/style.css"
+
+[zabrze.files]
+"files/zabrze/config.yaml" = "~/.config/zabrze/config.yaml"
+
+[zsh]
+depends = [
+    "common",
+    "bat",
+    "fzf",
+    "starship",
+    "tmux",
+    "vivid",
+    "zabrze",
+]
+[zsh.files]
+"files/zsh/home.zshenv" = "~/.zshenv"
+"files/zsh/zshenv" = "~/.config/zsh/.zshenv"
+"files/zsh/zshrc" = "~/.config/zsh/.zshrc"
+"files/zsh/scripts" = "~/.config/zsh/scripts"
