@@ -2,7 +2,6 @@ local config = require("utils.setup_lsp")
 
 config:add_treesitter("rust")
 
-config:add_lsp_list("rust-analyzer")
 require("rust-tools").setup({
     tools = { -- rust-tools options
 

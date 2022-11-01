@@ -26,9 +26,6 @@ require("lspconfig").sumneko_lua.setup({
     },
 })
 
-config:add_lsp_list("stylua")
-config:add_null_ls_sources(
-    require("null-ls").builtins.formatting.stylua.with({
-        extra_args = { "--indent-type=Spaces" },
-    })
-)
+config:add_null_ls_sources(require("null-ls").builtins.formatting.stylua.with({
+    extra_args = { "--indent-type=Spaces" },
+}))
