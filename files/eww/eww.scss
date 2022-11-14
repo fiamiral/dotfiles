@@ -36,6 +36,10 @@ $background: $nord0;
     margin-right: 10pt;
 }
 
+.progress {
+    min-width: 200pt;
+}
+
 .high {
     color: $nord8;
 }
@@ -50,4 +54,19 @@ $background: $nord0;
 
 .very_low {
     color: $nord11;
+}
+
+.brightness trough {
+    background-color: #4C566A;
+    min-width: 75px;
+    min-height: 5px;
+}
+
+.brightness highlight {
+    background-color: #EBCB8B;
+}
+
+.brightness slider {
+    min-width: 5px;
+    min-height: 5px;
 }

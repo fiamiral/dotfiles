@@ -16,9 +16,21 @@
        :orientation "h"
        :space-evenly false
        :halign "end"
+    (brightness)
     (thermal)
     (battery)
     (box time)))
+
+(defwidget brightness []
+  (box
+    (scale :class "brightness"
+           :min 1
+           :max 100
+           :value brightness
+           :onchange "brightnessctl set {}%"
+      "brightness")))
+(defpoll brightness :interval "5s"
+  `brightnessctl -m | cut -d, -f4 | tr -d '%'`)
 
 (defwidget thermal []
   (box :class "box"
