@@ -123,3 +123,9 @@ require("which-key").register({
 }, { prefix = "<leader>" })
 
 require("scrollbar").setup()
+
+-- autosave
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
+    pattern = "*",
+    command = "wa",
+})
