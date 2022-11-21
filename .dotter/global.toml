@@ -50,6 +50,7 @@ depends = [
 ]
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
+"files/git/gitmessage" = "~/.config/git/gitmessage"
 "files/git/script" = "~/.config/git/script"
 
 [greetd.files]

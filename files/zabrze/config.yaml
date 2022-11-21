@@ -37,8 +37,3 @@ abbrevs:
     snippet: graph
     global: true
     context: '^git '
-  - name: git emoji-commit
-    abbr: ec
-    snippet: emoji-commit
-    global: true
-    context: '^git '

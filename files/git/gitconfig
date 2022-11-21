@@ -7,16 +7,13 @@
     alias = !git config --get-regexp \"alias.\" | sed s/alias.// | sort
 
     # Initial commit
-    initcm = commit --allow-empty -m \"🌱 initial commit\"
+    initcm = commit --allow-empty -m \"chore: initial commit\"
 
     # Show pritty praph
     graph = log --oneline --graph --date=short --pretty=\"format:%C(yellow)%h%Creset %C(cyan)%ad %C(green)%an %C(reset)%s %C(red bold)%d%C(reset)\"
 
     #interactive add
     a = !${XDG_CONFIG_HOME}/git/script/fzf-gadd
-
-    # Commit with Emoji
-    emoji-commit = !${XDG_CONFIG_HOME}/git/script/emoji-commit
 
 [color]
     # Set to color
@@ -47,3 +44,5 @@
     root = ~/projects
 [credential]
 	helper = rbw
+[commit]
+	template = /home/mia/.config/git/gitmessage
