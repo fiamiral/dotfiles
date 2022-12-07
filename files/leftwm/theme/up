@@ -15,11 +15,11 @@ ln -s "${SCRIPTPATH}/down" /tmp/leftwm-theme-down
 leftwm-command "LoadTheme ${SCRIPTPATH}/theme.ron"
 
 # picom
-picom --config "${SCRIPTPATH}/picom.conf" &
+picom --config "${SCRIPTPATH}/picom.conf" --backend glx &
 
 # wallpaper
 feh --no-fehbg --randomize --bg-fill ~/.local/wallpapers/*
 
 # eww
 sleep 1
-eww open bar
+eww open bar &
