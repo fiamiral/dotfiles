@@ -148,6 +148,6 @@ depends = [
 ]
 [zsh.files]
 "files/zsh/home.zshenv" = "~/.zshenv"
-"files/zsh/zshenv" = "~/.config/zsh/.zshenv"
-"files/zsh/zshrc" = "~/.config/zsh/.zshrc"
-"files/zsh/scripts" = "~/.config/zsh/scripts"
+"files/zsh/.zshenv" = "~/.config/zsh/.zshenv"
+"files/zsh/.zshrc" = "~/.config/zsh/.zshrc"
+"files/zsh/plugins.toml" = "~/.config/sheldon/plugins.toml"
