@@ -84,7 +84,6 @@ depends = [
 
 [neovim.files]
 "files/neovim/init.lua" = "~/.config/nvim/init.lua"
-"files/neovim/lua" = "~/.config/nvim/lua"
 
 [paru.files]
 "files/paru/paru.conf" = "~/.config/paru/paru.conf"

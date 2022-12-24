@@ -1,131 +1,270 @@
-require("plugins")
-
-vim.cmd.colorscheme("nord")
-
-require("transparent").setup({
-    enable = true, -- boolean: enable transparent
-    extra_groups = { -- table/string: additional groups that should be cleared
-        -- In particular, when you set it to 'all', that means all available groups
-        "all",
-    },
-    exclude = {}, -- table: groups you don't want to clear
-})
-
-vim.wo.number = true
-vim.bo.tabstop = 4
-vim.bo.shiftwidth = 4
-vim.bo.expandtab = true
-vim.g.mapleader = " "
-vim.go.termguicolors = true
-
-require("lsp")
-
-local cmp = require("cmp")
-
-if not cmp then
-    error()
+-- Lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--single-branch",
+        "https://github.com/folke/lazy.nvim.git",
+        lazypath,
+    })
 end
+vim.opt.runtimepath:prepend(lazypath)
 
-cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+-- Plugins
+vim.g.mapleader = " "
+require("lazy").setup({
+    -- colorscheme
+    "shaunsingh/nord.nvim",
+    -- tree-sitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        event = { "BufReadPost" },
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "bash",
+                    "diff",
+                    "dockerfile",
+                    "javascript",
+                    "lua",
+                    "markdown",
+                    "markdown_inline",
+                    "regex",
+                    "rust",
+                    "toml",
+                },
+                highlight = {
+                    enable = true,
+                },
+            })
         end,
     },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
-    sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        -- { name = "vsnip" }, -- For vsnip users.
-        { name = "luasnip" }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
-    }, {
-        { name = "buffer" },
-    }),
-})
-require("lualine").setup({
-    options = {
-        icons_enabled = true,
-        theme = "nord",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
-        disabled_filetypes = {
-            statusline = {},
-            winbar = {},
+    -- LSP
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig",
+            "lvimuser/lsp-inlayhints.nvim",
         },
-        ignore_focus = {},
-        always_divide_middle = true,
-        globalstatus = false,
-        refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
+        config = function()
+            require("mason").setup()
+            require("lsp-inlayhints").setup({
+                inlay_hints = {
+                    highlight = "Comment",
+                },
+            })
+
+            -- install packages
+            local install_list = { "stylua", "shellcheck" }
+            local mason_registry = require("mason-registry")
+            for _, tool in ipairs(install_list) do
+                local package = mason_registry.get_package(tool)
+                if not package:is_installed() then
+                    package:install()
+                end
+            end
+
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "bashls", --bash
+                    "dockerls", --dockerfile
+                    "sumneko_lua", -- lua
+                    "rust_analyzer", --rust
+                    "taplo", --toml
+                },
+            })
+            require("mason-lspconfig").setup_handlers({
+                function(server_name)
+                    local options = {
+                        on_attach = function(client, bufnr)
+                            -- format on save
+                            vim.api.nvim_create_autocmd("BufWritePre", {
+                                callback = function()
+                                    vim.lsp.buf.format()
+                                    require("lsp-inlayhints").on_attach(client, bufnr)
+                                end,
+                            })
+                        end,
+                        -- completion
+                        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                    }
+                    if server_name == "sumneko_lua" then
+                        options.settings = {
+                            Lua = {
+                                runtime = {
+                                    version = "LuaJIT",
+                                },
+                                diagnostics = {
+                                    globals = { "vim" },
+                                },
+                                workspace = {
+                                    library = vim.api.nvim_get_runtime_file("", true),
+                                },
+                                telemetry = {
+                                    enable = false,
+                                },
+                            },
+                        }
+                    end
+                    require("lspconfig")[server_name].setup(options)
+                end,
+            })
+        end,
+    },
+    {
+        "j-hui/fidget.nvim",
+        config = {
+            window = {
+                blend = 0,
+            },
         },
     },
-    sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = { "filename" },
-        lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            local null_ls = require("null-ls")
+            null_ls.setup({
+                sources = {
+                    require("null-ls").builtins.code_actions.shellcheck,
+                    require("null-ls").builtins.formatting.stylua.with({
+                        extra_args = { "--indent-type=Spaces" },
+                    }),
+                },
+            })
+        end,
     },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
+    {
+        url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = true,
     },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {},
+
+    -- completion
+    {
+        "hrsh7th/nvim-cmp",
+        event = { "InsertEnter", "CmdLineEnter" },
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp", -- LSP source
+            "hrsh7th/cmp-path", -- path source
+            "hrsh7th/cmp-cmdline", -- cmdline(:) source
+            "L3MON4D3/LuaSnip", -- Snippet
+            "saadparwaiz1/cmp_luasnip", -- Snippet source
+        },
+        config = function()
+            local cmp = require("cmp")
+
+            cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end,
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                }),
+                sources = cmp.config.sources({
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                }, {
+                    { name = "buffer" },
+                }),
+            })
+
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = "path" },
+                }, {
+                    { name = "cmdline" },
+                }),
+            })
+        end,
+    },
+
+    -- statusline
+    {
+        "nvim-lualine/lualine.nvim",
+        event = { "VeryLazy" },
+        config = {
+            options = {
+                theme = "nord",
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
+            },
+            sections = {
+                lualine_a = { "mode" },
+                lualine_b = { "branch", "diff", "diagnostics" },
+                lualine_c = { "filename" },
+                lualine_x = { "encoding", "fileformat", "filetype" },
+                lualine_y = { "progress" },
+                lualine_z = { "location" },
+            },
+        },
+    },
+
+    -- other
+    {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({})
+            -- If you want insert `(` after select function or method item
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            local cmp = require("cmp")
+            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end,
+    },
+    {
+        "folke/which-key.nvim",
+        event = { "VeryLazy" },
+        config = true,
+    },
+    {
+        "sidebar-nvim/sidebar.nvim",
+        config = function()
+            require("sidebar-nvim").setup({
+                sections = { "git", "diagnostics" },
+            })
+            require("which-key").register({
+                b = { '<cmd>lua require("sidebar-nvim").toggle()<CR>', "toggle sidebar" },
+            }, { prefix = "<leader>" })
+        end,
+    },
 })
 
-require("sidebar-nvim").setup({
-    disable_default_keybindings = 0,
-    bindings = nil,
-    open = true,
-    side = "left",
-    initial_width = 35,
-    hide_statusline = false,
-    update_interval = 1000,
-    sections = { "git", "diagnostics" },
-    section_separator = { "", "-----", "" },
-    section_title_separator = { "" },
-    containers = {
-        attach_shell = "/bin/sh",
-        show_all = true,
-        interval = 5000,
-    },
-    datetime = { format = "%a %b %d, %H:%M", clocks = { { name = "local" } } },
-    todos = { ignored_paths = { "~" } },
-})
+-- vim options
+-- linum
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cursorline = true
+-- tab
+vim.opt.shiftwidth = 0
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
+-- indent
+vim.opt.smartindent = true
 
-require("which-key").register({
-    b = { '<cmd>lua require("sidebar-nvim").toggle()<CR>', "toggle sidebar" },
-}, { prefix = "<leader>" })
+-- keybind
+vim.keymap.set("i", "jk", "<ESC>")
 
-require("scrollbar").setup()
+-- folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
+
+-- colorscheme
+vim.opt.termguicolors = true
+vim.g.nord_disable_background = true
+vim.cmd.colorscheme("nord")
 
 -- autosave
-vim.api.nvim_create_autocmd({ "FocusLost" }, {
+vim.api.nvim_create_autocmd("FocusLost", {
     pattern = "*",
     command = "wa",
 })
