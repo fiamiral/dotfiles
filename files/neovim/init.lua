@@ -117,6 +117,7 @@ require("lazy").setup({
     },
     {
         "j-hui/fidget.nvim",
+        event = { "BufReadPost" },
         config = {
             window = {
                 blend = 0,
@@ -125,6 +126,7 @@ require("lazy").setup({
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
+        event = { "BufReadPre" },
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
@@ -142,6 +144,7 @@ require("lazy").setup({
     },
     {
         url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        event = { "BufReadPost" },
         config = true,
     },
 
@@ -212,6 +215,7 @@ require("lazy").setup({
     -- other
     {
         "windwp/nvim-autopairs",
+        event = { "InsertEnter" },
         config = function()
             require("nvim-autopairs").setup({})
             -- If you want insert `(` after select function or method item
@@ -227,6 +231,7 @@ require("lazy").setup({
     },
     {
         "sidebar-nvim/sidebar.nvim",
+        event = { "VeryLazy" },
         config = function()
             require("sidebar-nvim").setup({
                 sections = { "git", "diagnostics" },
