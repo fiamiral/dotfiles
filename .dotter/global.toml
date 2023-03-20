@@ -7,7 +7,7 @@
 depends = ["git", "neovim", "zsh"]
 
 [gui-common]
-depends = ["alacritty", "qutebrowser"]
+depends = ["alacritty", "qutebrowser", "theme"]
 
 [alacritty]
 variables = { fontsize = "13" }
@@ -91,6 +91,10 @@ depends = ["greetd", "waybar", "wofi"]
 "files/sway/config" = "~/.config/sway/config"
 "files/sway/scripts" = "~/.config/sway/scripts"
 "bin/random-wallpaper" = "~/.local/bin/random-wallpaper"
+
+[theme.files]
+"files/theme/index.theme" = "~/.local/share/icons/default/index.theme"
+"files/theme/settings.ini" = "~/.config/gtk-3.0/settings.ini"
 
 [tmux.files]
 "files/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
