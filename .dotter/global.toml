@@ -17,10 +17,6 @@ variables = { fontsize = "13" }
 [bat.files]
 "files/bat/config" = "~/.config/bat/config"
 
-[bitwarden.files]
-"bin/fbw" = "~/.local/bin/fbw"
-"bin/git-credential-rbw" = "~/.local/bin/git-credential-rbw"
-
 [emacs.files]
 "files/emacs/init.el" = "~/.config/emacs/init.el"
 "files/emacs/init-org.org" = "~/.config/emacs/init-org.org"
@@ -37,8 +33,6 @@ variables = { fontsize = "13" }
 [fzf.files]
 "bin/fzf-float" = "~/.local/bin/fzf-float"
 
-[git]
-depends = ["bitwarden"]
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
 "files/git/gitmessage" = "~/.config/git/gitmessage"
