@@ -1,6 +1,0 @@
-#!/bin/bash
-swaymsg -t get_tree \
-| jq '.. | objects | select (.type == "workspace" and .name != "__i3_scratch")
-      | {id, name, nodes:map(
-          .. | objects | select (.type == "con" and .orientation == "none") | {id, name}
-        )}'

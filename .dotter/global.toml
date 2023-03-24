@@ -89,8 +89,7 @@ depends = ["greetd", "waybar", "wofi"]
 "files/sway/sway-start.sh" = { target = "/usr/local/bin/sway-start.sh", type = "template", owner = "root" }
 "files/sway/sway.desktop" = { target = "/usr/share/wayland-sessions/sway-script.desktop", type = "template", owner = "root" }
 "files/sway/config" = "~/.config/sway/config"
-"files/sway/scripts" = "~/.config/sway/scripts"
-"bin/random-wallpaper" = "~/.local/bin/random-wallpaper"
+"files/sway/eww" = "~/.config/sway/eww"
 
 [theme.files]
 "files/theme/index.theme" = "~/.local/share/icons/default/index.theme"

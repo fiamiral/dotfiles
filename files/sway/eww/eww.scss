@@ -1,0 +1,72 @@
+* {
+    all: unset;
+}
+
+// colors
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+$nord11: #BF616A;
+$nord12: #D08770;
+$nord13: #EBCB8B;
+$nord14: #A3BE8C;
+$nord15: #B48EAD;
+
+$background: $nord0;
+
+.bar {
+    background-color: $background;
+    opacity: 1;
+}
+
+.rightside {
+    //font-size: 8
+}
+
+.rightside box {
+    margin-left: 10pt;
+    margin-right: 10pt;
+}
+
+.progress {
+    min-width: 200pt;
+}
+
+.high {
+    color: $nord8;
+}
+
+.middle {
+    color: $nord4;
+}
+
+.low {
+    color: $nord13;
+}
+
+.very_low {
+    color: $nord11;
+}
+
+.brightness trough {
+    background-color: #4C566A;
+    min-width: 75px;
+    min-height: 5px;
+}
+
+.brightness highlight {
+    background-color: #EBCB8B;
+}
+
+.brightness slider {
+    min-width: 5px;
+    min-height: 5px;
+}

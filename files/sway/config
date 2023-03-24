@@ -1,43 +1,55 @@
-# ----------------
-#     Keybind
-# ----------------
+# --------------------
+#       Keybind
+# --------------------
 
-# set modifier
+# set modifier key
 set $mod Mod4
-
-# reload
-bindsym $mod+r reload
-
-# switch workspace
-bindsym $mod+s exec "${HOME}/.config/sway/scripts/switch-workspace"
-
-# send to workspace
-bindsym $mod+shift+s exec "${HOME}/.config/sway/scripts/send-to-workspace"
-
-# drag to move window
 floating_modifier $mod
 
-# scratchpad
-bindsym $mod+o scratchpad show
-
-# launch
-## terminal
+# open applications
 bindsym $mod+Return exec alacritty
-## browser
-bindsym $mod+b exec firefox
-## launcher
+bindsym $mod+b exec 'gtk-launch "$(xdg-settings get default-web-browser)"'
 bindsym $mod+l exec 'wofi --show drun'
 
-# quit
-## kill window
-bindsym $mod+q kill
-## exit sway
+# open scratchpad
+bindsym $mod+o scratchpad show
+
+# workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+
+# switch to last active workspace
+bindsym $mod+Tab workspace back_and_forth
+
+# quits
+bindsym $mod+Shift+q kill
 bindsym $mod+Ctrl+q exit
 
+# misc
+bindsym $mod+Ctrl+r reload
 
-# ----------------
-#   appearance
-# ----------------
+
+
+# --------------------
+#     Appearance
+# --------------------
 
 # hide title bar
 default_border pixel 2
@@ -50,44 +62,20 @@ gaps inner 5
 font pango:Cica 13
 
 # wallpaper
-exec random-wallpaper
+exec swaybg --mode fill --image ~/.local/wallpapers/snow.jpg
 
-# cursor theme
-seat seat0 xcursor_theme Nordzy-cursors
-exec gsettings set org.gnome.desktop.interface cursor-theme Nordzy-cursors
-
-# set default workspace name to "main"
-workspace main
-
-
-# ----------------
-#    Floating
-# ----------------
-
-for_window [instance="dialog"] floating enable
-
-
-# ----------------
-#   Scratchpad
-# ----------------
+# --------------------
+#      Scratchpad
+# --------------------
 
 # rule for scratchpad
 for_window [instance="scratchpad"] floating enable, move scratchpad
-# autostart scratchpad
+# start scratchpad
 exec alacritty --class scratchpad
 
-# ----------------
-#    Autostart
-# ----------------
+# --------------------
+#      Autostart
+# --------------------
 
-# start IME
 exec --no-startup-id fcitx5
-
-# auto mount
-exec udiskie
-
-# start waybar
-exec waybar
-
-# fix xdg-desktop-portal timeout
-exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+exec eww --config ~/.config/sway/eww open bar
