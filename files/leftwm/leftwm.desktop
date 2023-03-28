@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=LeftWM(Script)
-Comment=A window manager for the adventurer
-Exec=/usr/local/bin/leftwm-start.sh
-Type=Application
-DesktopNames=LeftWM(Script)

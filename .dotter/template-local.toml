@@ -7,16 +7,11 @@ packages = [
     #        "zsh",
     "gui-common",
     #        "alacritty",
-    #        "qutebrowser",
     # window managers
     "i3",
-    "leftwm",
     "sway",
     # other
-    "emacs",
-    "micro",
     "paru",
-    "qtile",
 
     # deps
     #    "bat",
@@ -28,7 +23,6 @@ packages = [
     #    "starship",
     #    "tmux",
     #    "vivid",
-    #    "waybar",
     #    "wofi",
     #    "zabrze",
 ]

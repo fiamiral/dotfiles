@@ -7,7 +7,7 @@
 depends = ["git", "neovim", "zsh"]
 
 [gui-common]
-depends = ["alacritty", "qutebrowser", "theme"]
+depends = ["alacritty", "theme"]
 
 [alacritty]
 variables = { fontsize = "13" }
@@ -16,10 +16,6 @@ variables = { fontsize = "13" }
 
 [bat.files]
 "files/bat/config" = "~/.config/bat/config"
-
-[emacs.files]
-"files/emacs/init.el" = "~/.config/emacs/init.el"
-"files/emacs/init-org.org" = "~/.config/emacs/init-org.org"
 
 [eww.files]
 "files/eww/eww.yuck" = "~/.config/eww/eww.yuck"
@@ -48,17 +44,6 @@ depends = ["fcitx5", "rofi"]
 "files/i3/i3.desktop" = { target = "/usr/share/xsessions/i3-script.desktop", type = "template", owner = "root" }
 "files/i3/xinitrc" = { target = "/etc/X11/xinit/xinitrc-script", type = "template", owner = "root" }
 
-[leftwm]
-depends = ["eww", "fcitx5", "greetd", "rofi"]
-[leftwm.files]
-"files/leftwm/config.ron" = "~/.config/leftwm/config.ron"
-"files/leftwm/theme" = "~/.config/leftwm/themes/current"
-"files/leftwm/leftwm-start.sh" = { target = "/usr/local/bin/leftwm-start.sh", type = "template", owner = "root" }
-"files/leftwm/leftwm.desktop" = { target = "/usr/share/xsessions/leftwm-script.desktop", type = "template", owner = "root" }
-
-[micro.files]
-"files/micro/settings.json" = "~/.config/micro/settings.json"
-
 [neovim.files]
 "files/neovim/init.lua" = "~/.config/nvim/init.lua"
 "files/neovim/lazy-lock.json" = "~/.config/nvim/lazy-lock.json"
@@ -66,15 +51,6 @@ depends = ["eww", "fcitx5", "greetd", "rofi"]
 [paru.files]
 "files/paru/paru.conf" = "~/.config/paru/paru.conf"
 
-[qtile.files]
-"files/qtile/config.py" = "~/.config/qtile/config.py"
-"bin/qtile-switch-group" = "~/.local/bin/qtile-switch-group"
-
-[qutebrowser.files]
-"files/qutebrowser/autoconfig.yml" = "~/.config/qutebrowser/autoconfig.yml"
-"files/qutebrowser/config.py" = "~/.config/qutebrowser/config.py"
-"files/qutebrowser/nord-qutebrowser.py" = "~/.config/qutebrowser/nord-qutebrowser.py"
-"files/qutebrowser/greasemonkey" = "~/.local/share/qutebrowser/greasemonkey"
 
 [rofi.files]
 "files/rofi/nord.rasi" = "~/.config/rofi/themes/nord.rasi"
@@ -84,7 +60,7 @@ depends = ["eww", "fcitx5", "greetd", "rofi"]
 "files/starship/starship.toml" = "~/.config/starship.toml"
 
 [sway]
-depends = ["greetd", "waybar", "wofi"]
+depends = ["greetd", "wofi"]
 [sway.files]
 "files/sway/sway-start.sh" = { target = "/usr/local/bin/sway-start.sh", type = "template", owner = "root" }
 "files/sway/sway.desktop" = { target = "/usr/share/wayland-sessions/sway-script.desktop", type = "template", owner = "root" }
@@ -101,10 +77,6 @@ depends = ["greetd", "waybar", "wofi"]
 
 [vivid.files]
 "files/vivid/filetypes.yml" = "~/.config/vivid/filetypes.yml"
-
-[waybar.files]
-"files/waybar/config" = "~/.config/waybar/config"
-"files/waybar/style.css" = "~/.config/waybar/style.css"
 
 [wofi.files]
 "files/wofi/style.css" = "~/.config/wofi/style.css"
