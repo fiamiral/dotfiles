@@ -47,6 +47,7 @@ depends = ["fcitx5", "rofi"]
 [neovim.files]
 "files/neovim/init.lua" = "~/.config/nvim/init.lua"
 "files/neovim/lazy-lock.json" = "~/.config/nvim/lazy-lock.json"
+"files/neovim/lua" = "~/.config/nvim/lua"
 
 [paru.files]
 "files/paru/paru.conf" = "~/.config/paru/paru.conf"
