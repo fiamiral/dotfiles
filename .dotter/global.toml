@@ -17,17 +17,10 @@ variables = { fontsize = "13" }
 [bat.files]
 "files/bat/config" = "~/.config/bat/config"
 
-[eww.files]
-"files/eww/eww.yuck" = "~/.config/eww/eww.yuck"
-"files/eww/eww.scss" = "~/.config/eww/eww.scss"
-
 [fcitx5.files]
 "files/fcitx5/config" = "~/.config/fcitx5/config"
 "files/fcitx5/profile" = { target = "~/.config/fcitx5/profile", type = "template" }
 "files/fcitx5/fcitx5.desktop" = "~/.config/autostart/fcitx5.desktop"
-
-[fzf.files]
-"bin/fzf-float" = "~/.local/bin/fzf-float"
 
 [git.files]
 "files/git/gitconfig" = "~/.config/git/config"
@@ -76,9 +69,6 @@ depends = ["greetd", "wofi"]
 "files/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
 "bin/tmux-change-session" = "~/.local/bin/tmux-change-session"
 
-[vivid.files]
-"files/vivid/filetypes.yml" = "~/.config/vivid/filetypes.yml"
-
 [wofi.files]
 "files/wofi/style.css" = "~/.config/wofi/style.css"
 
@@ -86,7 +76,7 @@ depends = ["greetd", "wofi"]
 "files/zabrze/config.yaml" = "~/.config/zabrze/config.yaml"
 
 [zsh]
-depends = ["common", "bat", "fzf", "starship", "tmux", "vivid", "zabrze"]
+depends = ["common", "bat", "starship", "tmux", "zabrze"]
 [zsh.files]
 "files/zsh/home.zshenv" = "~/.zshenv"
 "files/zsh/.zshenv" = "~/.config/zsh/.zshenv"

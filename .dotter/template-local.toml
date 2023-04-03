@@ -15,14 +15,11 @@ packages = [
 
     # deps
     #    "bat",
-    #    "eww",
     #    "fcitx5",
-    #    "fzf",
     #    "greetd",
     #    "rofi",
     #    "starship",
     #    "tmux",
-    #    "vivid",
     #    "wofi",
     #    "zabrze",
 ]
