@@ -62,7 +62,7 @@ gaps inner 5
 font pango:Cica 13
 
 # wallpaper
-exec swaybg --mode fill --image ~/.local/wallpapers/snow.jpg
+exec swaybg --mode fill --image $(find ~/.local/wallpapers -type f -name '*.jpg' -o -name '*.png' | shuf -n 1)
 
 # --------------------
 #      Scratchpad
