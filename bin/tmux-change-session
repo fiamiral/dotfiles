@@ -28,7 +28,7 @@ _select_preview() {
     full=$(echo {} | cut -d, -f2)
     name=$(echo {} | cut -d, -f3-)
     case "${type}" in
-        "repo") onefetch --show-logo never -- "${full}" ;;
+        "repo") onefetch --no-art -- "${full}" ;;
         "dir") exa -lFT --level=2 --color=always --ignore-glob=".git" \
                    --no-user --no-permissions --git --no-time ${full} ;;
         custom*) eval "$(echo "${type}" | cut -d: -f2-)" ;;
