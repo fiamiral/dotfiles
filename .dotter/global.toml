@@ -42,10 +42,6 @@ depends = ["fcitx5", "rofi"]
 "files/neovim/lazy-lock.json" = "~/.config/nvim/lazy-lock.json"
 "files/neovim/lua" = "~/.config/nvim/lua"
 
-[paru.files]
-"files/paru/paru.conf" = "~/.config/paru/paru.conf"
-
-
 [rofi.files]
 "files/rofi/nord.rasi" = "~/.config/rofi/themes/nord.rasi"
 "files/rofi/config.rasi" = "~/.config/rofi/config.rasi"

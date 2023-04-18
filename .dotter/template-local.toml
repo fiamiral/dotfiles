@@ -10,8 +10,6 @@ packages = [
     # window managers
     "i3",
     "sway",
-    # other
-    "paru",
 
     # deps
     #    "bat",
