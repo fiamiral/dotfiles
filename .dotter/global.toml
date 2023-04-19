@@ -29,6 +29,7 @@ variables = { fontsize = "13" }
 
 [greetd.files]
 "files/greetd/config.toml" = { target = "/etc/greetd/config.toml", type = "template", owner = "root" }
+"files/greetd/regreet.toml" = { target = "/etc/greetd/regreet.toml", type = "template", owner = "root" }
 
 [i3]
 depends = ["fcitx5", "rofi"]
