@@ -46,6 +46,15 @@ bindsym $mod+Ctrl+q exit
 bindsym $mod+Ctrl+r reload
 
 
+# --------------------
+#     Input
+# --------------------
+
+# touchpad settings
+input type:touchpad {
+    tap enabled
+}
+
 
 # --------------------
 #     Appearance
@@ -73,9 +82,17 @@ for_window [instance="scratchpad"] floating enable, move scratchpad
 # start scratchpad
 exec alacritty --class scratchpad
 
+
+# --------------------
+#      Include
+# --------------------
+
+include "~/.config/sway/configs/*"
+
 # --------------------
 #      Autostart
 # --------------------
 
 exec --no-startup-id fcitx5
 exec eww --config ~/.config/sway/eww open bar
+
