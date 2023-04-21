@@ -1,6 +1,6 @@
-[include]
-    # Set user information in a separate file
-    path = config.local
+[user]
+    name = fiamiral
+    email = fiamiral@lumilize.me
 
 [alias]
     # Show all aliases
