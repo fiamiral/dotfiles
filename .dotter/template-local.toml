@@ -1,26 +1,5 @@
 includes = []
-packages = [
-    "common",
-    "cui-common",
-    #        "git",
-    #        "neovim",
-    #        "zsh",
-    "gui-common",
-    #        "alacritty",
-    # window managers
-    "i3",
-    "sway",
-
-    # deps
-    #    "bat",
-    #    "fcitx5",
-    #    "greetd",
-    #    "rofi",
-    #    "starship",
-    #    "tmux",
-    #    "wofi",
-    #    "zabrze",
-]
+packages = ["common", "root"]
 
 [files]
 
