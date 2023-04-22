@@ -24,6 +24,7 @@ fontsize = 13
 "home/.config/starship.toml" = "~/.config/starship.toml"
 "home/.config/sway/config" = "~/.config/sway/config"
 "home/.config/sway/eww" = "~/.config/sway/eww"
+"home/.config/swaylock/config" = "~/.config/swaylock/config"
 "home/.config/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
 "home/.config/wofi/style.css" = "~/.config/wofi/style.css"
 "home/.config/zabrze/config.yaml" = "~/.config/zabrze/config.yaml"

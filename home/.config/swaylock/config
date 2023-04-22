@@ -1,0 +1,14 @@
+clock
+timestr=%H:%M:%S
+datestr=%Y-%m-%d
+
+screenshots
+
+effect-blur=10x20
+
+fade-in=0.5
+
+indicator
+indicator-radius=120
+indicator-thickness=10
+indicator-caps-lock
