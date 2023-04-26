@@ -14,5 +14,7 @@ export XMODIFIERS=@im=fcitx5
 # set PATH
 PATH="$PATH:${HOME}/.local/bin"
 
+. "${HOME}/.config/common.env"
+
 #sleep 1
 exec sway

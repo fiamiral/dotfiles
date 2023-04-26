@@ -1,0 +1,70 @@
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "5px"
+                               :y "0px"
+                               :width "40px"
+                               :height "98%"
+                               :anchor "center left")
+           :stacking "fg"
+           :exclusive true
+  (bar))
+
+(defwidget bar[]
+  (box :orientation "vertical"
+       :space-evenly false
+    ; Top
+    (box :class "top"
+         :orientation "vertical"
+         :valign "start"
+         :vexpand true
+         :space-evenly false
+      (snow-icon)
+      (workspaces))
+    ; Bottom
+    (box :class "bottom"
+         :orientation "vertical"
+         :valign "end"
+         :vexpand true
+         :space-evenly false
+      (box :class "bottom-icons"
+           :orientation "vertical"
+           :space-evenly false
+        (network)
+        (thermal)
+        (battery))
+      (clock))))
+
+(defwidget snow-icon[]
+  (box :class "snow-icon"
+    ""))
+
+(deflisten workspace "cargo run --release -- workspaces")
+(defwidget workspaces[]
+  (literal :content workspace))
+
+(deflisten network "cargo run --release -- network")
+;; (deflisten network-icon "./scripts/network-icon.sh")
+(defwidget network[]
+  (literal :content network))
+  ;; (box :class "bottom-icon"
+    ;; network-icon))
+
+(deflisten thermal "cargo run --release -- thermal")
+(defwidget thermal[]
+  (literal :content thermal))
+
+(deflisten battery "cargo run --release -- battery")
+(defwidget battery[]
+  (literal :content battery))
+
+(defpoll time-hour :interval "1s" "date '+%H'")
+(defpoll time-min  :interval "1s" "date '+%M'")
+(defpoll time-sec  :interval "1s" "date '+%S'")
+(defpoll date      :interval "5s" "date '+%Y-%m-%d'")
+(defwidget clock[]
+  (box :class "clock"
+       :orientation "vertical"
+       :tooltip date
+    time-hour
+    time-min
+    time-sec))

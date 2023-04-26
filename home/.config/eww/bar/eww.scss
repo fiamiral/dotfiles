@@ -1,0 +1,87 @@
+* {
+    all: unset;
+}
+
+// colors
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+$nord11: #BF616A;
+$nord12: #D08770;
+$nord13: #EBCB8B;
+$nord14: #A3BE8C;
+$nord15: #B48EAD;
+
+$background: $nord0;
+$background-dark: $nord0;
+$background-bright: $nord1;
+$border-radius: 18px;
+$radius: 25px;
+$margin: 18px;
+
+.bar {
+    background-color: $background;
+    border-radius: 15px;
+    font-size: 24px;
+}
+
+.top {
+    margin-top: 15px;
+}
+
+.bottom {
+    margin-bottom: 10px;
+}
+
+.snow-icon {
+    color: $nord9;
+    padding-bottom: 5px;
+}
+
+.workspaces {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.workspace-icon {
+    color: $nord3;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.workspace-icon-focused {
+    color: $nord4;
+}
+
+.bottom-icons {
+    background-color: $background-bright;
+    border-radius: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.bottom-icon {
+    color: $nord4;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.clock {
+    color: $nord4;
+    font-family: Cica;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+tooltip {
+    background-color: $nord3;
+    border-radius: 15px;
+}
