@@ -1,0 +1,48 @@
+(defwindow powermenu-closer
+           :monitor 0
+           :geometry (geometry :width "100%"
+                               :height "100%")
+           :stacking "fg"
+           :focusable false
+  (eventbox :onclick "${EWW_CMD} close powermenu-closer && ${EWW_CMD} close powermenu"))
+ 
+
+(defwindow powermenu
+           :monitor 0
+           :geometry (geometry :x "0px"
+                               :y "0px"
+                               :width "540px"
+                               :height "100px"
+                               :anchor "center")
+           :stacking "fg"
+  (powermenu))
+
+(defvar powermenu-text "")
+(defwidget powermenu[]
+  (box :space-evenly false
+       :orientation "vertical"
+    (box :class "powermenu-text"
+      powermenu-text)
+      
+    (box :space-evenly false
+         :valign "center"
+         :halign "center"
+      :spacing 10
+      (icon :onclick "${EWW_CMD} close powermenu && swaylock &"       :color "#88C0D0" :text "lock" :icon "󰌾")
+      (icon :onclick "${EWW_CMD} close powermenu && systemctl suspend" :color "#5E81AC" :text "suspend" :icon "󰤄")
+      (icon :onclick "${EWW_CMD} close powermenu && sway exit"      :color "#ebcb8b" :text "logout" :icon "󰍃")
+      (icon :onclick "${EWW_CMD} close powermenu && shutdown 0"        :color "#BF616A" :text "shutdown" :icon "󰐥")
+      (icon :onclick "${EWW_CMD} close powermenu && reboot"            :color "#B48EBD" :text "reboot" :icon "󰤁"))))
+  
+
+(defwidget icon[onclick text icon color]
+  (eventbox :class "powermenu-icon"
+            :style "color: ${color};"
+            :width 100
+            :height 100
+            :valign "center"
+            :halign "center"
+            :onhover "${EWW_CMD} update powermenu-text=${text}"
+            :onhoverlost "${EWW_CMD} update powermenu-text="
+            :onclick onclick
+    icon))

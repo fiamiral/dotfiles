@@ -44,7 +44,9 @@ bindsym $mod+Ctrl+q exit
 
 # misc
 bindsym $mod+Ctrl+r reload
-bindsym $mod+Ctrl+l exec swaylock
+bindsym $mod+Ctrl+l exec ' \
+    eww --config ~/.config/eww/powermenu open powermenu && \
+    eww --config ~/.config/eww/powermenu open powermenu-closer'
 
 
 # --------------------
@@ -101,4 +103,5 @@ exec swayidle -w \
     before-sleep 'swaylock -f'
 exec --no-startup-id fcitx5
 exec eww --config ~/.config/eww/bar open bar
+exec eww --config ~/.config/eww/powermenu daemon
 

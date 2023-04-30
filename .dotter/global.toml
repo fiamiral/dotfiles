@@ -13,6 +13,7 @@ fontsize = 13
 "home/.config/eww/bar/eww.scss" = "~/.config/eww/bar/eww.scss"
 "home/.config/eww/bar/eww.yuck" = "~/.config/eww/bar/eww.yuck"
 "home/.config/eww/bar/src" = "~/.config/eww/bar/src"
+"home/.config/eww/powermenu" = "~/.config/eww/powermenu"
 "home/.config/fcitx5/config" = "~/.config/fcitx5/config"
 "home/.config/fcitx5/profile" = { target = "~/.config/fcitx5/profile", type = "template" }
 "home/.config/git/config" = "~/.config/git/config"
