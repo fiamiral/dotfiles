@@ -4,7 +4,7 @@
                                :height "100%")
            :stacking "fg"
            :focusable false
-  (eventbox :onclick "${EWW_CMD} close powermenu-closer && ${EWW_CMD} close powermenu"))
+  (eventbox :onclick "${EWW_CONFIG_DIR}/run.sh close"))
  
 
 (defwindow powermenu
@@ -28,11 +28,11 @@
          :valign "center"
          :halign "center"
       :spacing 10
-      (icon :onclick "${EWW_CMD} close powermenu && swaylock &"       :color "#88C0D0" :text "lock" :icon "󰌾")
-      (icon :onclick "${EWW_CMD} close powermenu && systemctl suspend" :color "#5E81AC" :text "suspend" :icon "󰤄")
-      (icon :onclick "${EWW_CMD} close powermenu && sway exit"      :color "#ebcb8b" :text "logout" :icon "󰍃")
-      (icon :onclick "${EWW_CMD} close powermenu && shutdown 0"        :color "#BF616A" :text "shutdown" :icon "󰐥")
-      (icon :onclick "${EWW_CMD} close powermenu && reboot"            :color "#B48EBD" :text "reboot" :icon "󰤁"))))
+      (icon :onclick "${EWW_CONFIG_DIR}/run.sh lock"     :color "#88C0D0" :text "lock" :icon "󰌾")
+      (icon :onclick "${EWW_CONFIG_DIR}/run.sh suspend"  :color "#5E81AC" :text "suspend" :icon "󰤄")
+      (icon :onclick "${EWW_CONFIG_DIR}/run.sh logout"   :color "#ebcb8b" :text "logout" :icon "󰍃")
+      (icon :onclick "${EWW_CONFIG_DIR}/run.sh shutdown" :color "#BF616A" :text "shutdown" :icon "󰐥")
+      (icon :onclick "${EWW_CONFIG_DIR}/run.sh reboot"   :color "#B48EBD" :text "reboot" :icon "󰤁"))))
   
 
 (defwidget icon[onclick text icon color]
