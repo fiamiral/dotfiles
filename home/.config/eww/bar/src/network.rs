@@ -1,6 +1,8 @@
 use std::process::Command;
 
-use crate::{yuck::Widget, State};
+use serde_json::json;
+
+use crate::State;
 
 enum ConnectionType {
     Ethernet,
@@ -70,9 +72,12 @@ pub fn network(state: &mut State) -> Result<(), Box<dyn std::error::Error>> {
         ConnectionType::None => "󰀝",
     };
 
-    let widget = Widget::new("box", ["bottom-icon"], [], format!(r#""{icon}""#));
-
-    state.update_widget(&widget);
+    state.update(
+        json!({
+            "icon": icon,
+        })
+        .to_string(),
+    );
 
     Ok(())
 }

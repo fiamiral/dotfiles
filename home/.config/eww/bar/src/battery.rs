@@ -1,9 +1,10 @@
+use serde_json::json;
 use starship_battery::{
     units::{ratio::percent, time::second},
     Manager, State as BatteryState,
 };
 
-use crate::{colors, yuck::Widget, State};
+use crate::{colors, State};
 
 const BAT_DISCHARGING_ICONS: [&str; 11] = ["󱃍", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"];
 const BAT_CHARGING_ICONS: [&str; 11] = ["󰢜", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"];
@@ -59,14 +60,14 @@ pub fn battery(state: &mut State) -> Result<(), Box<dyn std::error::Error>> {
         _ => format!("{percentage}%"),
     };
 
-    let widget = Widget::new(
-        "box",
-        ["bottom-icon"],
-        [("style", format!("color: {color}")), ("tooltip", tooltip)],
-        format!(r#""{icon}""#),
+    state.update(
+        json!({
+            "tooltip": tooltip,
+            "color": color,
+            "icon": icon,
+        })
+        .to_string(),
     );
-
-    state.update_widget(&widget);
 
     Ok(())
 }

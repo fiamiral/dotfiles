@@ -1,6 +1,7 @@
+use serde_json::json;
 use sysinfo::{ComponentExt, System, SystemExt};
 
-use crate::{colors, yuck::Widget, State};
+use crate::{colors, State};
 
 pub fn thermal(state: &mut State) -> Result<(), Box<dyn std::error::Error>> {
     let system = {
@@ -31,17 +32,14 @@ pub fn thermal(state: &mut State) -> Result<(), Box<dyn std::error::Error>> {
         75.. => colors::RED,
     };
 
-    let widget = Widget::new(
-        "box",
-        ["bottom-icon"],
-        [
-            ("style", format!("color: {color}")),
-            ("tooltip", format!("{temperature} °C")),
-        ],
-        format!(r#""{icon}""#),
+    state.update(
+        json!({
+            "tooltip": format!("{temperature} °C"),
+            "color": color,
+            "icon": icon,
+        })
+        .to_string(),
     );
-
-    state.update_widget(&widget);
 
     Ok(())
 }

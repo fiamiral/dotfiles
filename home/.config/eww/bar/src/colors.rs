@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 pub const NORD0: &str = "#2E3440";
 pub const NORD1: &str = "#3B4252";
 pub const NORD2: &str = "#434C5E";

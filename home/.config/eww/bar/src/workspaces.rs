@@ -1,48 +1,39 @@
+use serde::Serialize;
 use swayipc::{Connection, EventType};
 
-use crate::{yuck::Widget, State};
+use crate::State;
+
+#[derive(Serialize)]
+struct Workspace {
+    name: String,
+    focused: bool,
+}
 
 pub fn workspaces(state: &mut State) -> Result<(), Box<dyn std::error::Error>> {
     let dummy_conn = Connection::new()?;
     let mut conn = Connection::new()?;
 
     // Initial
-    state.update_widget(&get_widget(&mut conn)?);
+    state.update(get_info(&mut conn)?);
 
     let events = dummy_conn.subscribe([EventType::Workspace])?;
 
     for _ in events {
-        state.update_widget(&get_widget(&mut conn)?);
+        state.update(get_info(&mut conn)?);
     }
 
     Ok(())
 }
 
-fn get_widget(conn: &mut Connection) -> Result<Widget, Box<dyn std::error::Error>> {
-    let body = conn
+fn get_info(conn: &mut Connection) -> Result<String, Box<dyn std::error::Error>> {
+    let workspaces = conn
         .get_workspaces()?
         .into_iter()
-        .map(|ws| {
-            let mut class = vec!["workspace-icon"];
-            if ws.focused {
-                class.push("workspace-icon-focused")
-            };
-            Widget::new(
-                "button",
-                class,
-                [("onclick", format!("swaymsg workspace {}", ws.name))],
-                ws.name,
-            )
-            .to_string()
+        .map(|ws| Workspace {
+            name: ws.name,
+            focused: ws.focused,
         })
-        .collect::<String>();
+        .collect::<Vec<_>>();
 
-    let widget = Widget::new(
-        "box",
-        ["workspaces"],
-        [("orientation", "vertical".into())],
-        body,
-    );
-
-    Ok(widget)
+    Ok(serde_json::to_string(&workspaces).unwrap())
 }

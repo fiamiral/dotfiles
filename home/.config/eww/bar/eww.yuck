@@ -38,33 +38,40 @@
   (box :class "snow-icon"
     ""))
 
-(deflisten workspace "cargo run --release -- workspaces")
+(deflisten workspaces "cargo run --release -- workspaces")
 (defwidget workspaces[]
-  (literal :content workspace))
+  (box :class "workspaces"
+       :orientation "vertical"
+    (for ws in workspaces
+      (button :class "workspace-icon ${ws.focused ? "workspace-icon-focused" : ""}"
+              :onclick "swaymsg workspace ${ws.name}"
+        {ws.name}))))
 
 (deflisten network "cargo run --release -- network")
-;; (deflisten network-icon "./scripts/network-icon.sh")
 (defwidget network[]
-  (literal :content network))
-  ;; (box :class "bottom-icon"
-    ;; network-icon))
+  (box :class "bottom-icon"
+    {network.icon}))
 
 (deflisten thermal "cargo run --release -- thermal")
 (defwidget thermal[]
-  (literal :content thermal))
+  (box :class "bottom-icon"
+       :style "color: ${thermal.color}"
+       :tooltip {thermal.tooltip}
+    {thermal.icon}))
 
 (deflisten battery "cargo run --release -- battery")
 (defwidget battery[]
-  (literal :content battery))
+  (box :class "bottom-icon"
+       :style "color: ${battery.color}"
+       :tooltip {battery.tooltip}
+    {battery.icon}))
 
-(defpoll time-hour :interval "1s" "date '+%H'")
-(defpoll time-min  :interval "1s" "date '+%M'")
-(defpoll time-sec  :interval "1s" "date '+%S'")
-(defpoll date      :interval "5s" "date '+%Y-%m-%d'")
+(defpoll time :interval "1s" "date '+[\"%H\",\"%M\",\"%S\"]'")
+(defpoll date :interval "5s" "date '+%Y-%m-%d'")
 (defwidget clock[]
   (box :class "clock"
        :orientation "vertical"
        :tooltip date
-    time-hour
-    time-min
-    time-sec))
+    {time[0]}
+    {time[1]}
+    {time[2]}))

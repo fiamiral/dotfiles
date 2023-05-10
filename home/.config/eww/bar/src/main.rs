@@ -1,16 +1,13 @@
 use std::{thread, time::Duration};
 
 use clap::{Parser, Subcommand};
-use yuck::Widget;
 
-#[allow(dead_code)]
 mod colors;
 
 mod battery;
 mod network;
 mod thermal;
 mod workspaces;
-mod yuck;
 
 #[derive(Parser)]
 struct Args {
@@ -45,10 +42,6 @@ impl State {
         } else {
             false
         }
-    }
-
-    pub fn update_widget(&mut self, widget: &Widget) -> bool {
-        self.update(widget.to_string())
     }
 }
 
