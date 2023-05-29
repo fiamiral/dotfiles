@@ -104,11 +104,7 @@ include "~/.config/sway/configs/*"
 #      Autostart
 # --------------------
 
-exec swayidle -w \
-    timeout 600 'swaylock -f' \
-    timeout 900 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f'
+exec swayidle -w before-sleep 'swaylock -f'
 exec --no-startup-id fcitx5
 exec eww --config ~/.config/eww/bar open bar
 exec eww --config ~/.config/eww/powermenu daemon
