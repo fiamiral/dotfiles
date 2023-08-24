@@ -71,3 +71,9 @@ font:
 
 window:
   opacity: 0.8
+
+shell:
+  program: nu
+  args:
+    - -e
+    - "try {tmux attach -t main} catch {tmux new-session -s main}"
