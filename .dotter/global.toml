@@ -28,18 +28,13 @@ fontsize = 13
 "home/.config/nvim/lua" = "~/.config/nvim/lua"
 "home/.config/rofi/config.rasi" = "~/.config/rofi/config.rasi"
 "home/.config/rofi/themes/nord.rasi" = "~/.config/rofi/themes/nord.rasi"
-"home/.config/sheldon/plugins.toml" = "~/.config/sheldon/plugins.toml"
 "home/.config/starship.toml" = "~/.config/starship.toml"
 "home/.config/sway/config" = "~/.config/sway/config"
 "home/.config/swaylock/config" = "~/.config/swaylock/config"
 "home/.config/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
 "home/.config/wofi/style.css" = "~/.config/wofi/style.css"
-"home/.config/zabrze/config.yaml" = "~/.config/zabrze/config.yaml"
-"home/.config/zsh/.zshenv" = "~/.config/zsh/.zshenv"
-"home/.config/zsh/.zshrc" = "~/.config/zsh/.zshrc"
 "home/.local/bin/tmux-change-session" = "~/.local/bin/tmux-change-session"
 "home/.local/share/icons/default/index.theme" = "~/.local/share/icons/default/index.theme"
-"home/.zshenv" = "~/.zshenv"
 
 [root.files]
 "files/greetd/config.toml" = { target = "/etc/greetd/config.toml", type = "template", owner = "root" }
