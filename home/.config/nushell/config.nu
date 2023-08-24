@@ -667,3 +667,6 @@ alias ll = ls --long
 alias cp = cp --verbose --progress
 alias mv = mv --verbose
 alias rm = rm --verbose --interactive-once
+
+# carapace for completion
+source ~/.cache/carapace/init.nu

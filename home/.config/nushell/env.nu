@@ -16,6 +16,9 @@ $env.RUSTUP_HOME = ($"($env.XDG_DATA_HOME)/rustup") # rustup
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
 
+# carapace for completion
+mkdir ~/.cache/carapace
+carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
