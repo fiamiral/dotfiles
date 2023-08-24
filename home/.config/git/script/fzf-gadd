@@ -2,7 +2,7 @@
 
 files=$(unbuffer git status -s \
         | fzf --ansi --multi \
-            --preview='tmp={};unbuffer git diff HEAD -- ${tmp:3}' \
+            --preview='sh -c "tmp={};unbuffer git diff HEAD -- ${tmp:3}"' \
             --preview-window='75%' \
         | awk '{print $2}' \
         | tr '\n' ' ')
