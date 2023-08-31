@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Sway(Script)
-Comment=An i3-compatible Wayland compositor
-Exec=/usr/local/bin/sway-start.sh
-Type=Application

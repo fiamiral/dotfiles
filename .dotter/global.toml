@@ -21,16 +21,12 @@ fontsize = 13
 "home/.config/git/script" = "~/.config/git/script"
 "home/.config/gtk-3.0/settings.ini" = "~/.config/gtk-3.0/settings.ini"
 "home/.config/hypr" = "~/.config/hypr"
-"home/.config/i3/config" = "~/.config/i3/config"
 "home/.config/nushell/env.nu" = "~/.config/nushell/env.nu"
 "home/.config/nushell/config.nu" = "~/.config/nushell/config.nu"
 "home/.config/nvim/init.lua" = "~/.config/nvim/init.lua"
 "home/.config/nvim/lazy-lock.json" = "~/.config/nvim/lazy-lock.json"
 "home/.config/nvim/lua" = "~/.config/nvim/lua"
-"home/.config/rofi/config.rasi" = "~/.config/rofi/config.rasi"
-"home/.config/rofi/themes/nord.rasi" = "~/.config/rofi/themes/nord.rasi"
 "home/.config/starship.toml" = "~/.config/starship.toml"
-"home/.config/sway/config" = "~/.config/sway/config"
 "home/.config/swaylock/config" = "~/.config/swaylock/config"
 "home/.config/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
 "home/.config/wofi/style.css" = "~/.config/wofi/style.css"
@@ -40,7 +36,3 @@ fontsize = 13
 [root.files]
 "files/greetd/config.toml" = { target = "/etc/greetd/config.toml", type = "template", owner = "root" }
 "files/greetd/regreet.toml" = { target = "/etc/greetd/regreet.toml", type = "template", owner = "root" }
-"files/i3/i3.desktop" = { target = "/usr/share/xsessions/i3-script.desktop", type = "template", owner = "root" }
-"files/i3/xinitrc" = { target = "/etc/X11/xinit/xinitrc-script", type = "template", owner = "root" }
-"files/sway/sway-start.sh" = { target = "/usr/local/bin/sway-start.sh", type = "template", owner = "root" }
-"files/sway/sway.desktop" = { target = "/usr/share/wayland-sessions/sway-script.desktop", type = "template", owner = "root" }

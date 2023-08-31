@@ -1,5 +1,0 @@
-@theme "nord"
-
-configuration {
-    font: "Cica 14";
-}
