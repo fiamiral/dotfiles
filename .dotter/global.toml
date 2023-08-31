@@ -20,6 +20,7 @@ fontsize = 13
 "home/.config/git/gitmessage" = "~/.config/git/gitmessage"
 "home/.config/git/script" = "~/.config/git/script"
 "home/.config/gtk-3.0/settings.ini" = "~/.config/gtk-3.0/settings.ini"
+"home/.config/hypr" = "~/.config/hypr"
 "home/.config/i3/config" = "~/.config/i3/config"
 "home/.config/nushell/env.nu" = "~/.config/nushell/env.nu"
 "home/.config/nushell/config.nu" = "~/.config/nushell/config.nu"
