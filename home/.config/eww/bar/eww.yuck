@@ -44,7 +44,7 @@
        :orientation "vertical"
     (for ws in workspaces
       (button :class "workspace-icon ${ws.focused ? "workspace-icon-focused" : ""}"
-              :onclick "swaymsg workspace ${ws.name}"
+              :onclick "hyprctl dispatch workspace ${ws.name}"
         {ws.name}))))
 
 (deflisten network "cargo run --release -- network")

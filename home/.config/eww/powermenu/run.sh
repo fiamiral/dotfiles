@@ -3,12 +3,12 @@
 close() {
     eww --config ~/.config/eww/powermenu close powermenu
     eww --config ~/.config/eww/powermenu close powermenu-closer
-    sway mode "default"
+    hyprctl dispatch submap reset
 }
 
 case $1 in
     open)
-        sway mode "powermenu"
+        hyprctl dispatch submap powermenu
         eww --config ~/.config/eww/powermenu open powermenu
         eww --config ~/.config/eww/powermenu open powermenu-closer
         ;;

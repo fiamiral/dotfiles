@@ -1,5 +1,9 @@
+use hyprland::{
+    data::{self, Workspaces},
+    event_listener::EventListener,
+    shared::{HyprData, HyprDataActive},
+};
 use serde::Serialize;
-use swayipc::{Connection, EventType};
 
 use crate::State;
 
@@ -9,31 +13,48 @@ struct Workspace {
     focused: bool,
 }
 
-pub fn workspaces(state: &mut State) -> Result<(), Box<dyn std::error::Error>> {
-    let dummy_conn = Connection::new()?;
-    let mut conn = Connection::new()?;
+pub fn workspaces(_state: &mut State) -> Result<(), Box<dyn std::error::Error>> {
+    print_workspace_list();
 
-    // Initial
-    state.update(get_info(&mut conn)?);
+    let mut listener = EventListener::new();
 
-    let events = dummy_conn.subscribe([EventType::Workspace])?;
+    listener.add_workspace_added_handler(|_| {
+        print_workspace_list();
+    });
 
-    for _ in events {
-        state.update(get_info(&mut conn)?);
-    }
+    listener.add_workspace_moved_handler(|_| {
+        print_workspace_list();
+    });
+
+    listener.add_workspace_change_handler(|_| {
+        print_workspace_list();
+    });
+
+    listener.add_workspace_destroy_handler(|_| {
+        print_workspace_list();
+    });
+
+    listener.start_listener()?;
 
     Ok(())
 }
 
-fn get_info(conn: &mut Connection) -> Result<String, Box<dyn std::error::Error>> {
-    let workspaces = conn
-        .get_workspaces()?
-        .into_iter()
-        .map(|ws| Workspace {
-            name: ws.name,
-            focused: ws.focused,
+fn print_workspace_list() {
+    println!("{}", list_workspaces().unwrap());
+}
+
+fn list_workspaces() -> Result<String, Box<dyn std::error::Error>> {
+    let active = data::Workspace::get_active()?.name;
+
+    let ws = Workspaces::get()?
+        .filter(|ws| ws.name != "special")
+        .map(|ws| {
+            let name = ws.name;
+            let focused = name == active;
+
+            Workspace { name, focused }
         })
         .collect::<Vec<_>>();
 
-    Ok(serde_json::to_string(&workspaces).unwrap())
+    Ok(serde_json::to_string(&ws).unwrap())
 }
